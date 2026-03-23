@@ -1,98 +1,54 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import Link from 'next/link'
 
 export default function Hero() {
-  const gridRef = useRef<HTMLCanvasElement>(null)
-
-  // Subtle animated dot grid — geometric, not flashy
-  useEffect(() => {
-    const canvas = gridRef.current
-    if (!canvas) return
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
-
-    const resize = () => {
-      canvas.width  = canvas.offsetWidth
-      canvas.height = canvas.offsetHeight
-    }
-    resize()
-    window.addEventListener('resize', resize)
-
-    let frame = 0
-    let raf: number
-
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-      const ink = getComputedStyle(document.documentElement)
-        .getPropertyValue('--color-ink')
-        .trim()
-        .replace(/\s+/g, ', ')
-      const spacing = 40
-      const cols = Math.ceil(canvas.width  / spacing)
-      const rows = Math.ceil(canvas.height / spacing)
-
-      for (let c = 0; c <= cols; c++) {
-        for (let r = 0; r <= rows; r++) {
-          const x = c * spacing
-          const y = r * spacing
-          // gentle pulse based on distance from center + time
-          const dx = x - canvas.width  / 2
-          const dy = y - canvas.height / 2
-          const dist = Math.sqrt(dx * dx + dy * dy)
-          const pulse = Math.sin(dist / 80 - frame / 60) * 0.5 + 0.5
-          const alpha = 0.04 + pulse * 0.06
-          ctx.fillStyle = `rgba(${ink},${alpha})`
-          ctx.beginPath()
-          ctx.arc(x, y, 1.2, 0, Math.PI * 2)
-          ctx.fill()
-        }
-      }
-      frame++
-      raf = requestAnimationFrame(draw)
-    }
-    draw()
-
-    return () => {
-      window.removeEventListener('resize', resize)
-      cancelAnimationFrame(raf)
-    }
-  }, [])
+  const videoRef = useRef<HTMLVideoElement>(null)
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-end pb-20 pt-32 overflow-hidden bg-surface">
+    <section className="relative min-h-screen flex flex-col justify-end pb-20 pt-32 overflow-hidden bg-black">
 
-      {/* Animated dot grid background */}
-      <canvas
-        ref={gridRef}
-        className="absolute inset-0 w-full h-full pointer-events-none"
+      {/* Background Video */}
+      <video
+        ref={videoRef}
+        className="absolute inset-0 w-full h-full object-cover"
+        muted
+        loop
+        autoPlay
+        playsInline
+        preload="auto"
+        poster="/videos/hero/hero-poster.jpg"
+        src="/videos/hero-optimized.mp4"
         aria-hidden
       />
 
+      {/* Dark gradient overlay for text legibility */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/80 pointer-events-none" />
+
       {/* Single yellow glow accent — top right */}
       <div
-        className="absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none"
+        className="absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none opacity-50 mix-blend-screen"
         style={{
-          background: 'radial-gradient(ellipse at 80% 20%, rgba(255,252,1,0.12) 0%, transparent 60%)',
+          background: 'radial-gradient(ellipse at 80% 20%, rgba(255,252,1,0.15) 0%, transparent 60%)',
         }}
         aria-hidden
       />
 
-      <div className="relative max-w-site mx-auto px-6 lg:px-10 w-full">
+      <div className="relative max-w-site mx-auto px-6 lg:px-10 w-full z-10">
 
         {/* Section label */}
-        <p className="section-label mb-8">AI Automation & Computer Vision</p>
+        <p className="font-mono text-sm tracking-widest uppercase text-yellow mb-6 delay-100 opacity-90">AI Automation & Computer Vision</p>
 
-        {/* The headline — two lines, psychologically crafted */}
-        <h1 className="text-display-xl font-display font-extrabold text-ink leading-none mb-8 max-w-5xl">
+        {/* The headline — sized perfectly for visual balance */}
+        <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-[5rem] font-display font-bold text-white leading-[1.05] tracking-tight mb-6 max-w-4xl">
           We turn AI
           <br />
-          <span className="relative inline-block">
+          <span className="relative inline-block text-white pb-1">
             into operations
             {/* Yellow underline accent */}
             <span
-              className="absolute bottom-0 left-0 right-0 h-[4px] bg-yellow"
+              className="absolute bottom-0 left-0 right-0 h-[4px] bg-yellow rounded-full"
               style={{ bottom: '4px' }}
               aria-hidden
             />
@@ -101,34 +57,42 @@ export default function Hero() {
         </h1>
 
         {/* Sub — what we actually do, no fluff */}
-        <p className="font-body text-lg md:text-xl text-ink-muted max-w-xl leading-relaxed mb-12">
+        <p className="font-body text-lg md:text-xl text-neutral-300 max-w-xl leading-relaxed mb-12">
           Custom automation systems, computer vision pipelines, and intelligent agents —
           built for businesses that are done doing things manually.
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-wrap items-center gap-4 mb-20">
-          <Link href="/work" className="btn-primary">
+        <div className="flex flex-wrap items-center gap-4 mb-16">
+          <Link href="/work" className="btn-primary border-none shadow-lg">
             See our work →
           </Link>
-          <Link href="/contact" className="btn-ghost">
+          <Link href="/contact" className="px-6 py-3 rounded-md font-medium transition-colors text-white hover:text-yellow flex items-center gap-2">
             Start a project
           </Link>
         </div>
 
-        {/* Proof strip — one line, just numbers */}
-        <div className="pt-10 border-t border-surface-border grid grid-cols-2 md:grid-cols-4 gap-6">
+        {/* Proof strip — Liquid Glassmorphic Update */}
+        <div className="p-6 md:p-8 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 grid grid-cols-2 md:grid-cols-4 gap-8 relative overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-all hover:bg-white/10">
+          
+          {/* Subtle shine / specular reflection on the glass container itself */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-30 pointer-events-none" />
+          
           {[
             { v: '10+',  l: 'Production systems shipped' },
             { v: '99.2%', l: 'Vision accuracy' },
             { v: '<1s',  l: 'Document processing' },
             { v: '80%',  l: 'Average time saved' },
           ].map(({ v, l }) => (
-            <div key={l}>
-              <div className="font-display font-extrabold text-3xl md:text-4xl text-ink tracking-tight">
+            <div key={l} className="relative z-10">
+              {/* Liquid Glass Numbers Effect */}
+              <div 
+                className="font-display font-bold text-4xl md:text-5xl tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/20 mb-2"
+                style={{ filter: "drop-shadow(0px 4px 12px rgba(255, 255, 255, 0.15))" }}
+              >
                 {v}
               </div>
-              <div className="font-mono text-[11px] tracking-wider uppercase text-ink-faint mt-1">
+              <div className="font-mono text-[11px] tracking-wider uppercase text-neutral-400">
                 {l}
               </div>
             </div>
@@ -138,3 +102,5 @@ export default function Hero() {
     </section>
   )
 }
+
+

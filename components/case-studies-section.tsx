@@ -13,7 +13,7 @@ export default function CaseStudiesSection() {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
           <div>
             <p className="section-label mb-4">Case Studies</p>
-            <h2 className="text-display-lg font-display font-extrabold text-ink">
+            <h2 className="text-display-lg font-display font-bold text-ink">
               What we've built
             </h2>
           </div>
@@ -73,7 +73,7 @@ export default function CaseStudiesSection() {
                   <div className="flex md:flex-col gap-6 md:gap-4 md:min-w-[180px] md:border-l md:border-surface-border md:pl-8">
                     {study.stats.map((stat, si) => (
                       <div key={si}>
-                        <div className="font-display font-extrabold text-2xl md:text-3xl text-ink tracking-tight leading-none">
+                        <div className="font-display font-bold text-2xl md:text-3xl text-ink tracking-tight leading-none">
                           {stat.value}
                         </div>
                         <div className="font-mono text-[10px] tracking-wide uppercase text-ink-faint mt-1">
@@ -112,3 +112,4 @@ export default function CaseStudiesSection() {
     </section>
   )
 }
+

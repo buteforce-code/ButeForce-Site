@@ -18,11 +18,14 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  const isHome = pathname === '/'
+  const useLightHeader = isHome && !scrolled
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-surface/95 backdrop-blur-md border-b border-surface-border shadow-sm'
+        scrolled || !isHome
+          ? 'bg-surface/50 backdrop-blur-xl border-b border-surface-border/50 shadow-sm'
           : 'bg-transparent'
       }`}
     >
@@ -34,7 +37,7 @@ export default function Nav() {
           className="flex items-center hover:opacity-80 transition-opacity"
           aria-label="Buteforce home"
         >
-          <BrandLogo priority className="h-6 md:h-7" />
+          <BrandLogo priority className="h-6 md:h-7" theme={useLightHeader ? 'light' : 'adaptive'} />
         </Link>
 
         {/* Desktop links */}
@@ -45,8 +48,8 @@ export default function Nav() {
                 href={link.href}
                 className={`font-mono text-xs tracking-widest uppercase transition-colors duration-150 ${
                   pathname === link.href
-                    ? 'text-ink'
-                    : 'text-ink-faint hover:text-ink'
+                    ? (useLightHeader ? 'text-white' : 'text-ink')
+                    : (useLightHeader ? 'text-white/70 hover:text-white' : 'text-ink-faint hover:text-ink')
                 }`}
               >
                 {link.label}
@@ -57,8 +60,10 @@ export default function Nav() {
 
         {/* CTA */}
         <div className="hidden md:flex items-center gap-4">
-          <ThemeToggle />
-          <Link href="/contact" className="btn-primary text-xs py-2.5 px-5">
+          <div className={`transition-opacity ${useLightHeader ? 'opacity-0 md:opacity-100 group-hover:opacity-100' : 'opacity-100'}`}>
+             <ThemeToggle />
+          </div>
+          <Link href="/contact" className={`text-xs py-2.5 px-5 transition-colors ${useLightHeader ? 'bg-white text-black hover:bg-white/90 rounded-md font-medium' : 'btn-primary'}`}>
             Start a project
             <span aria-hidden>→</span>
           </Link>
@@ -70,9 +75,9 @@ export default function Nav() {
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
-          <span className={`block w-5 h-0.5 bg-ink transition-all duration-200 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-          <span className={`block w-5 h-0.5 bg-ink transition-all duration-200 ${menuOpen ? 'opacity-0' : ''}`} />
-          <span className={`block w-5 h-0.5 bg-ink transition-all duration-200 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+          <span className={`block w-5 h-0.5 transition-all duration-200 ${useLightHeader ? 'bg-white' : 'bg-ink'} ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+          <span className={`block w-5 h-0.5 transition-all duration-200 ${useLightHeader ? 'bg-white' : 'bg-ink'} ${menuOpen ? 'opacity-0' : ''}`} />
+          <span className={`block w-5 h-0.5 transition-all duration-200 ${useLightHeader ? 'bg-white' : 'bg-ink'} ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
         </button>
       </nav>
 

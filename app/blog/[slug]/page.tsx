@@ -114,7 +114,7 @@ export default async function BlogPostPage({ params }: Props) {
               </span>
             </div>
 
-            <h1 className="font-display font-extrabold text-display-md text-ink mb-6 heading-relaxed max-w-[16ch]">
+            <h1 className="font-display font-bold text-display-md text-ink mb-6 heading-relaxed max-w-[16ch]">
               {post.meta.title}
             </h1>
 

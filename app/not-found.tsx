@@ -11,7 +11,7 @@ export default function NotFound() {
           <p className="font-mono text-xs tracking-widest uppercase text-ink-faint mb-6">
             404
           </p>
-          <h1 className="font-display font-extrabold text-display-lg text-ink mb-6 leading-tight">
+          <h1 className="font-display font-bold text-display-lg text-ink mb-6 leading-tight">
             Wrong turn.
           </h1>
           <p className="font-body text-ink-muted mb-10 max-w-sm mx-auto leading-relaxed">
@@ -27,3 +27,4 @@ export default function NotFound() {
     </>
   )
 }
+

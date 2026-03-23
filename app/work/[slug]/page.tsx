@@ -91,7 +91,7 @@ export default async function CaseStudyPage({ params }: Props) {
                   )}
                 </div>
 
-                <h1 className="text-display-md font-display font-extrabold text-ink mb-6 heading-relaxed max-w-[18ch]">
+                <h1 className="text-display-md font-display font-bold text-ink mb-6 heading-relaxed max-w-[18ch]">
                   {study.title}
                 </h1>
 
@@ -104,7 +104,7 @@ export default async function CaseStudyPage({ params }: Props) {
               <div className="flex flex-row lg:flex-col gap-6 lg:gap-8 lg:border-l lg:border-surface-border lg:pl-10">
                 {study.stats.map((stat, i) => (
                   <div key={i}>
-                    <div className="font-display font-extrabold text-3xl lg:text-4xl text-ink tracking-tight leading-none mb-1">
+                    <div className="font-display font-bold text-3xl lg:text-4xl text-ink tracking-tight leading-none mb-1">
                       {stat.value}
                     </div>
                     <div className="font-mono text-[10px] tracking-wide uppercase text-ink-faint">

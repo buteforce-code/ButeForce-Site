@@ -55,7 +55,7 @@ export default function BlogPage() {
           <div className="mb-16 pb-16 border-b border-surface-border">
             <p className="section-label mb-4">Blog</p>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-              <h1 className="text-display-lg font-display font-extrabold text-ink heading-relaxed max-w-[11ch]">
+              <h1 className="text-display-lg font-display font-bold text-ink heading-relaxed max-w-[11ch]">
                 AI in practice.
                 <br />
                 <span className="text-ink-faint">Not in theory.</span>
@@ -141,3 +141,4 @@ export default function BlogPage() {
     </>
   )
 }
+

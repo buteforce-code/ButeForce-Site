@@ -67,7 +67,7 @@ export default function WorkGrid() {
               <div className="flex gap-6 mt-auto pt-6 border-t border-surface-border">
                 {study.stats.slice(0, 3).map((stat, si) => (
                   <div key={si}>
-                    <div className="font-display font-extrabold text-xl text-ink tracking-tight">
+                    <div className="font-display font-bold text-xl text-ink tracking-tight">
                       {stat.value}
                     </div>
                     <div className="font-mono text-[9px] tracking-wide uppercase text-ink-faint mt-0.5">
@@ -94,3 +94,4 @@ export default function WorkGrid() {
     </div>
   )
 }
+

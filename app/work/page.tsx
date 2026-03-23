@@ -19,7 +19,7 @@ export default function WorkPage() {
 
           <div className="mb-16">
             <p className="section-label mb-4">Our Work</p>
-            <h1 className="text-display-lg font-display font-extrabold text-ink mb-6 heading-relaxed max-w-[12ch]">
+            <h1 className="text-display-lg font-display font-bold text-ink mb-6 heading-relaxed max-w-[12ch]">
               10 systems built
               <br />
               <span className="text-ink-faint">and shipped.</span>
@@ -37,3 +37,4 @@ export default function WorkPage() {
     </>
   )
 }
+

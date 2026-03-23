@@ -22,7 +22,7 @@ export default function ContactPage() {
             {/* Left — context */}
             <div>
               <p className="section-label mb-6">Start a project</p>
-              <h1 className="text-display-lg font-display font-extrabold text-ink mb-6 heading-relaxed max-w-[13ch]">
+              <h1 className="text-display-lg font-display font-bold text-ink mb-6 heading-relaxed max-w-[13ch]">
                 Tell us the problem.
                 <br />
                 <span className="text-ink-faint">We'll handle the rest.</span>
@@ -77,3 +77,4 @@ export default function ContactPage() {
     </>
   )
 }
+

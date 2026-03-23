@@ -26,7 +26,7 @@ export default function AboutPage() {
 
               <div>
                 <p className="section-label mb-6">About</p>
-                <h1 className="text-display-lg font-display font-extrabold text-ink mb-8 heading-relaxed max-w-[12ch]">
+                <h1 className="text-display-lg font-display font-bold text-ink mb-8 heading-relaxed max-w-[12ch]">
                   We build the thing.
                   <br />
                   <span className="text-ink-faint">Then we ship it.</span>
@@ -86,7 +86,7 @@ export default function AboutPage() {
                 { v: '< 1s', l: 'Fastest processing time' },
               ].map(({ v, l }) => (
                 <div key={l} className="text-center md:text-left">
-                  <div className="font-display font-extrabold text-4xl md:text-5xl text-ink tracking-tight mb-2">
+                  <div className="font-display font-bold text-4xl md:text-5xl text-ink tracking-tight mb-2">
                     {v}
                   </div>
                   <div className="font-mono text-[10px] tracking-widest uppercase text-ink-faint">
@@ -103,7 +103,7 @@ export default function AboutPage() {
           <div className="max-w-site mx-auto px-6 lg:px-10">
             <div className="max-w-2xl">
               <p className="section-label mb-4">Technical depth</p>
-              <h2 className="text-display-sm font-display font-extrabold text-ink mb-6">
+              <h2 className="text-display-sm font-display font-bold text-ink mb-6">
                 We name the tools we use because we know them.
               </h2>
               <p className="font-body text-ink-muted leading-relaxed mb-8">
@@ -194,3 +194,4 @@ export default function AboutPage() {
     </>
   )
 }
+

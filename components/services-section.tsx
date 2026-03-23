@@ -11,7 +11,7 @@ export default function ServicesSection() {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
           <div>
             <p className="section-label mb-4">Our Services</p>
-            <h2 className="text-display-lg font-display font-extrabold text-ink">
+            <h2 className="text-display-lg font-display font-bold text-ink">
               What we build
             </h2>
           </div>
@@ -77,3 +77,4 @@ export default function ServicesSection() {
     </section>
   )
 }
+

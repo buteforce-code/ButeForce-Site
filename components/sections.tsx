@@ -12,7 +12,7 @@ export function ComparisonSection() {
       <div className="max-w-site mx-auto px-6 lg:px-10">
         <div className="mb-16">
           <p className="section-label mb-4">The Difference</p>
-          <h2 className="text-display-lg font-display font-extrabold text-ink">
+          <h2 className="text-display-lg font-display font-bold text-ink">
             Why it matters who builds it
           </h2>
         </div>
@@ -144,7 +144,7 @@ export function FAQSection() {
       <div className="max-w-site mx-auto px-6 lg:px-10">
         <div className="max-w-prose-wide mx-auto">
           <p className="section-label mb-4">FAQ</p>
-          <h2 className="text-display-lg font-display font-extrabold text-ink mb-12">
+          <h2 className="text-display-lg font-display font-bold text-ink mb-12">
             Questions we get
           </h2>
 
@@ -187,7 +187,7 @@ export function CTASection() {
           Ready to start?
         </p>
 
-        <h2 className="text-display-lg font-display font-extrabold text-white mb-6 leading-tight">
+        <h2 className="text-display-lg font-display font-bold text-white mb-6 leading-tight">
           Done doing it manually?
         </h2>
 
@@ -211,3 +211,4 @@ export function CTASection() {
     </section>
   )
 }
+

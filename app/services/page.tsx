@@ -4,6 +4,7 @@ import Footer from '@/components/footer'
 import { CTASection } from '@/components/sections'
 import { SERVICES, CASE_STUDIES } from '@/lib/data'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'Services — AI Automation, Computer Vision & AI Agents',
@@ -37,18 +38,37 @@ export default function ServicesPage() {
       <main className="pt-32 bg-surface">
 
         {/* Header */}
-        <section className="pb-16 border-b border-surface-border">
+        <section className="pb-16 md:pb-24 pt-4 border-b border-surface-border">
           <div className="max-w-site mx-auto px-6 lg:px-10">
-            <p className="section-label mb-4">Services</p>
-            <h1 className="text-display-lg font-display font-extrabold text-ink mb-6 max-w-2xl heading-relaxed">
-              Four things we do.
-              <br />
-              <span className="text-ink-faint">All of them production-ready.</span>
-            </h1>
-            <p className="font-body text-lg text-ink-muted max-w-xl leading-relaxed">
-              We don't do strategy sessions, roadmaps, or workshops.
-              We build systems — and we ship them.
-            </p>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+              
+              {/* Left Side: Text */}
+              <div>
+                <p className="section-label mb-4">Services</p>
+                <h1 className="text-display-lg font-display font-bold text-ink mb-6 max-w-2xl heading-relaxed">
+                  Four things we do.
+                  <br />
+                  <span className="text-ink-faint">All of them production-ready.</span>
+                </h1>
+                <p className="font-body text-lg text-ink-muted max-w-xl leading-relaxed">
+                  We don't do strategy sessions, roadmaps, or workshops.
+                  We build systems — and we ship them.
+                </p>
+              </div>
+
+              {/* Right Side: Image Container */}
+              <div className="relative w-full aspect-square lg:aspect-[4/3] rounded-2xl overflow-hidden bg-surface-border/50 shadow-sm border border-surface-border">
+                <Image
+                  src="/images/services-hero.jpg"
+                  alt="AI Particle Structure"
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
+
+            </div>
           </div>
         </section>
 
@@ -78,7 +98,7 @@ export default function ServicesPage() {
                     <p className="font-mono text-xs tracking-widest uppercase text-yellow-dim mb-4">
                       {service.label}
                     </p>
-                    <h2 className="text-display-md font-display font-extrabold text-ink leading-tight mb-6">
+                    <h2 className="text-display-md font-display font-bold text-ink leading-tight mb-6">
                       {service.title}
                     </h2>
                     <p className="font-body text-ink-muted leading-relaxed mb-8 text-lg">
@@ -132,7 +152,7 @@ export default function ServicesPage() {
                           <div className="flex gap-4">
                             {work.stats.slice(0, 2).map((stat, si) => (
                               <div key={si}>
-                                <span className="font-display font-extrabold text-lg text-ink">{stat.value}</span>
+                                <span className="font-display font-bold text-lg text-ink">{stat.value}</span>
                                 <span className="font-mono text-[9px] tracking-wide uppercase text-ink-faint ml-1.5">{stat.label}</span>
                               </div>
                             ))}
@@ -159,7 +179,7 @@ export default function ServicesPage() {
           <div className="max-w-site mx-auto px-6 lg:px-10">
             <div className="max-w-2xl mx-auto text-center">
               <p className="section-label mb-4">How it works</p>
-              <h2 className="text-display-md font-display font-extrabold text-ink mb-6">
+              <h2 className="text-display-md font-display font-bold text-ink mb-6">
                 No retainers. No hourly rates.
               </h2>
               <p className="font-body text-ink-muted leading-relaxed mb-10">
@@ -180,3 +200,4 @@ export default function ServicesPage() {
     </>
   )
 }
+

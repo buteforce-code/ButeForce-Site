@@ -80,7 +80,7 @@ export default function ProcessSection() {
 
         <div className="mb-16">
           <p className="section-label mb-4">How We Build</p>
-          <h2 className="text-display-lg font-display font-extrabold text-ink">
+          <h2 className="text-display-lg font-display font-bold text-ink">
             The process
           </h2>
         </div>
@@ -169,3 +169,4 @@ export default function ProcessSection() {
     </section>
   )
 }
+
