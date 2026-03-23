@@ -89,7 +89,7 @@ export const SERVICES = [
 export const CASE_STUDIES = [
   {
     id: 'ocr-extraction',
-    year: '2024',
+    year: '2025',
     category: 'Document AI',
     title: 'Production OCR pipeline handling any document format',
     description:
@@ -100,13 +100,12 @@ export const CASE_STUDIES = [
       { value: 'Dual-engine', label: 'Routing architecture' },
     ],
     stack: ['Mistral 7B', 'Google Cloud Vision', 'Next.js', 'PostgreSQL'],
-    liveUrl: 'https://ocr-extraction.com',
     featured: true,
     slug: 'ocr-extraction',
   },
   {
     id: 'ortho-classifier',
-    year: '2024',
+    year: '2025',
     category: 'Computer Vision',
     title: 'Quality control system eliminating manual inspection on production lines',
     description:
@@ -122,7 +121,7 @@ export const CASE_STUDIES = [
   },
   {
     id: 'real-estate-agent',
-    year: '2024',
+    year: '2025',
     category: 'AI Agents',
     title: 'AI agent handling property inquiries around the clock',
     description:
@@ -138,7 +137,7 @@ export const CASE_STUDIES = [
   },
   {
     id: 'football-analytics',
-    year: '2024',
+    year: '2025',
     category: 'Computer Vision',
     title: 'Football match analytics from raw video footage',
     description:
@@ -154,7 +153,7 @@ export const CASE_STUDIES = [
   },
   {
     id: 'marketing-agent',
-    year: '2024',
+    year: '2025',
     category: 'AI Automation',
     title: 'Autonomous marketing team running on voice commands',
     description:

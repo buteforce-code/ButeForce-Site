@@ -38,37 +38,34 @@ export default function Hero() {
       <div className="relative max-w-site mx-auto px-6 lg:px-10 w-full z-10">
 
         {/* Section label */}
-        <p className="font-mono text-sm tracking-widest uppercase text-yellow mb-6 delay-100 opacity-90">AI Automation & Computer Vision</p>
+        <p className="font-mono text-sm tracking-widest uppercase text-yellow mb-6 delay-100 opacity-90">/ Buteforce</p>
 
         {/* The headline — sized perfectly for visual balance */}
-        <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-[5rem] font-display font-bold text-white leading-[1.05] tracking-tight mb-6 max-w-4xl">
-          We turn AI
-          <br />
-          <span className="relative inline-block text-white pb-1">
-            into operations
-            {/* Yellow underline accent */}
-            <span
-              className="absolute bottom-0 left-0 right-0 h-[4px] bg-yellow rounded-full"
-              style={{ bottom: '4px' }}
-              aria-hidden
-            />
-          </span>
+        <h1 className="text-4xl md:text-5xl lg:text-7xl xl:text-[4.5rem] font-display font-bold text-white leading-[1.1] tracking-tight mb-8 max-w-5xl">
+          The work your team keeps doing by hand
+          <br className="hidden lg:block" />
+          is the work we keep hearing about
           <span className="text-yellow">.</span>
         </h1>
 
         {/* Sub — what we actually do, no fluff */}
-        <p className="font-body text-lg md:text-xl text-neutral-300 max-w-xl leading-relaxed mb-12">
-          Custom automation systems, computer vision pipelines, and intelligent agents —
-          built for businesses that are done doing things manually.
-        </p>
+        <div className="flex flex-col gap-5 mb-12">
+          <p className="font-body text-lg md:text-xl text-neutral-300 max-w-2xl leading-relaxed">
+            We build the AI systems that take it off their plate —
+            custom, production-ready, and faster than you'd expect.
+          </p>
+          <p className="font-mono text-[11px] md:text-xs tracking-wide uppercase text-neutral-400">
+            No consultants. No pilot projects. Working systems.
+          </p>
+        </div>
 
         {/* CTAs */}
         <div className="flex flex-wrap items-center gap-4 mb-16">
-          <Link href="/work" className="btn-primary border-none shadow-lg">
-            See our work →
+          <Link href="/work" className="btn-primary border-none shadow-lg px-8">
+            See what we've built →
           </Link>
           <Link href="/contact" className="px-6 py-3 rounded-md font-medium transition-colors text-white hover:text-yellow flex items-center gap-2">
-            Start a project
+            Tell us your problem
           </Link>
         </div>
 

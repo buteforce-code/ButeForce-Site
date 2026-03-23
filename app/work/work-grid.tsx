@@ -23,7 +23,7 @@ export default function WorkGrid() {
             onClick={() => setActive(f)}
             className={`font-mono text-xs tracking-widest uppercase px-4 py-2 rounded-full border transition-all duration-150 ${
               active === f
-                ? 'bg-ink text-white border-ink'
+                ? 'bg-ink text-surface border-ink'
                 : 'bg-transparent text-ink-faint border-surface-border hover:border-ink-faint hover:text-ink-soft'
             }`}
           >
