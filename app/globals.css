@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── FONT VARIABLES (set by next/font in layout.tsx) ─────── */
+:root {
+  --font-syne:    'Syne', sans-serif;
+  --font-outfit:  'Outfit', sans-serif;
+  --font-dm-mono: 'DM Mono', monospace;
+  --color-yellow: 255 252 1;
+  --color-yellow-dim: 212 210 0;
+  --color-yellow-subtle: 255 253 224;
+  --color-ink: 17 17 17;
+  --color-ink-soft: 51 51 51;
+  --color-ink-muted: 85 85 85;
+  --color-ink-faint: 153 153 153;
+  --color-surface: 255 255 255;
+  --color-surface-warm: 247 247 245;
+  --color-surface-off: 242 242 239;
+  --color-surface-border: 229 229 224;
+  --color-surface-dark: 12 12 12;
+  color-scheme: light;
+}
+
+html.dark {
+  --color-yellow: 255 252 1;
+  --color-yellow-dim: 212 210 0;
+  --color-yellow-subtle: 58 58 19;
+  --color-ink: 245 245 245;
+  --color-ink-soft: 224 224 224;
+  --color-ink-muted: 176 176 176;
+  --color-ink-faint: 132 132 132;
+  --color-surface: 12 12 12;
+  --color-surface-warm: 17 17 17;
+  --color-surface-off: 24 24 24;
+  --color-surface-border: 42 42 42;
+  --color-surface-dark: 6 6 6;
+  color-scheme: dark;
+}
+
+/* ── BASE ─────────────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: rgb(var(--color-surface));
+  color: rgb(var(--color-ink));
+  font-family: var(--font-outfit), sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+/* ── SELECTION ────────────────────────────────────────────── */
+::selection {
+  background: rgb(var(--color-yellow));
+  color: rgb(var(--color-surface-dark));
+}
+
+/* ── SCROLLBAR ────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: rgb(var(--color-surface-warm)); }
+::-webkit-scrollbar-thumb { background: rgb(var(--color-yellow-dim)); border-radius: 3px; }
+
+/* ── SECTION LABEL UTILITY ───────────────────────────────── */
+@layer components {
+  .section-label {
+    @apply font-mono text-xs tracking-widest uppercase text-ink-faint;
+  }
+
+  .section-label::before {
+    content: '/ ';
+  }
+
+  /* ── BUTTON ─────────────────────────────────────────────── */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-yellow text-ink font-display font-bold
+           text-sm tracking-wide uppercase px-7 py-3.5 rounded-btn
+           transition-all duration-150 hover:bg-yellow-dim active:scale-[0.98];
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 bg-transparent text-ink-soft font-display font-bold
+           text-sm tracking-wide uppercase px-7 py-3.5 rounded-btn border border-surface-border
+           transition-all duration-150 hover:border-ink-soft active:scale-[0.98];
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-1.5 text-ink-muted font-body text-sm
+           transition-colors duration-150 hover:text-ink underline-offset-4 hover:underline;
+  }
+
+  /* ── CARD ────────────────────────────────────────────────── */
+  .card-base {
+    @apply bg-surface border border-surface-border rounded-card p-6
+           transition-all duration-200 hover:border-ink-faint hover:shadow-sm;
+  }
+
+  /* ── MARQUEE WRAPPER ─────────────────────────────────────── */
+  .marquee-outer {
+    @apply overflow-hidden flex;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+
+  /* ── PAIN LINE ───────────────────────────────────────────── */
+  .pain-line {
+    @apply block text-display-md font-display font-bold text-ink/20
+           transition-colors duration-500;
+  }
+  .pain-line.active {
+    @apply text-ink;
+  }
+
+  /* ── PROCESS STEP ────────────────────────────────────────── */
+  .process-step {
+    @apply opacity-30 transition-opacity duration-500;
+  }
+  .process-step.active {
+    @apply opacity-100;
+  }
+}
+
+@layer utilities {
+  .heading-relaxed {
+    letter-spacing: -0.025em;
+    line-height: 1.04;
+    text-wrap: balance;
+  }
+
+  .heading-card {
+    letter-spacing: -0.016em;
+    line-height: 1.14;
+    text-wrap: balance;
+  }
+}
+
+/* ── BLOG PROSE ──────────────────────────────────────────── */
+.prose-buteforce {
+  @apply prose prose-lg max-w-none;
+  @apply prose-headings:font-display prose-headings:font-bold prose-headings:text-ink;
+  @apply prose-p:text-ink-muted prose-p:leading-relaxed;
+  @apply prose-a:text-ink prose-a:underline prose-a:decoration-yellow prose-a:underline-offset-4;
+  @apply prose-code:font-mono prose-code:text-ink prose-code:bg-surface-warm prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded;
+  @apply prose-pre:bg-ink prose-pre:text-white;
+  @apply prose-blockquote:border-l-yellow prose-blockquote:text-ink-muted;
+  @apply prose-strong:text-ink prose-strong:font-semibold;
+}
