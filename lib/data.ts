@@ -86,7 +86,20 @@ export const SERVICES = [
 ]
 
 // ── CASE STUDIES ──────────────────────────────────────────
-export const CASE_STUDIES = [
+export interface CaseStudy {
+  id: string;
+  year: string;
+  category: string;
+  title: string;
+  description: string;
+  stats: { value: string; label: string }[];
+  stack: string[];
+  liveUrl?: string;
+  featured: boolean;
+  slug: string;
+}
+
+export const CASE_STUDIES: CaseStudy[] = [
   {
     id: 'ocr-extraction',
     year: '2025',
