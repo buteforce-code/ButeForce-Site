@@ -57,7 +57,7 @@ export default function ServicesPage() {
               </div>
 
               {/* Right Side: Image Container */}
-              <div className="relative w-full aspect-square lg:aspect-[4/3] rounded-2xl overflow-hidden bg-surface-border/50 shadow-sm border border-surface-border">
+              <div className="relative w-full aspect-square lg:aspect-[4/3] rounded-2xl overflow-hidden">
                 <Image
                   src="/images/services-hero.jpg"
                   alt="AI Particle Structure"

@@ -180,7 +180,7 @@ export function FAQSection() {
 // ── DARK CTA SECTION ──────────────────────────────────────
 export function CTASection() {
   return (
-    <section className="bg-ink py-24 md:py-36">
+    <section className="bg-black py-24 md:py-36 border-t border-surface-border">
       <div className="max-w-site mx-auto px-6 lg:px-10 text-center">
 
         <p className="font-mono text-xs tracking-widest uppercase text-white/30 mb-8">

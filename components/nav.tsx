@@ -63,9 +63,9 @@ export default function Nav() {
           <div className={`transition-opacity ${useLightHeader ? 'opacity-0 md:opacity-100 group-hover:opacity-100' : 'opacity-100'}`}>
              <ThemeToggle />
           </div>
-          <Link href="/contact" className={`text-xs py-2.5 px-5 transition-colors ${useLightHeader ? 'bg-white text-black hover:bg-white/90 rounded-md font-medium' : 'btn-primary'}`}>
+          <Link href="/contact" className={`text-xs py-2.5 px-5 transition-colors ${useLightHeader ? 'bg-white text-black hover:bg-white/90 rounded-md font-bold tracking-wide' : 'bg-yellow text-black hover:bg-yellow/90 rounded-md font-bold tracking-wide shadow-sm'}`}>
             Start a project
-            <span aria-hidden>→</span>
+            <span aria-hidden className="ml-1 opacity-70">→</span>
           </Link>
         </div>
 
