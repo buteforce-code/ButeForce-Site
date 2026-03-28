@@ -148,7 +148,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
       </head>
-      <body className="bg-surface text-ink font-body antialiased">
+      <body suppressHydrationWarning className="bg-surface text-ink font-body antialiased">
         {children}
       </body>
     </html>

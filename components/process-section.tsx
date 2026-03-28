@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { PROCESS_STEPS } from '@/lib/data'
+import { FadeContent } from '@/components/animations'
 
 export default function ProcessSection() {
   const [activeStep, setActiveStep] = useState(0)
@@ -78,12 +79,14 @@ export default function ProcessSection() {
     <section ref={sectionRef} className="py-24 md:py-32 bg-surface">
       <div className="max-w-site mx-auto px-6 lg:px-10">
 
-        <div className="mb-16">
-          <p className="section-label mb-4">How We Build</p>
-          <h2 className="text-display-lg font-display font-bold text-ink">
-            The process
-          </h2>
-        </div>
+        <FadeContent delay={0.1} yOffset={20}>
+          <div className="mb-16">
+            <p className="section-label mb-4">How We Build</p>
+            <h2 className="text-display-lg font-display font-bold text-ink">
+              The process
+            </h2>
+          </div>
+        </FadeContent>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
 

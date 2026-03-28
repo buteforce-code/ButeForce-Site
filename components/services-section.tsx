@@ -2,25 +2,28 @@
 
 import Link from 'next/link'
 import { SERVICES } from '@/lib/data'
+import { FadeContent, StaggerContainer } from '@/components/animations'
 
 export default function ServicesSection() {
   return (
     <section className="py-24 md:py-32 bg-surface">
       <div className="max-w-site mx-auto px-6 lg:px-10">
 
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
-          <div>
-            <p className="section-label mb-4">Our Services</p>
-            <h2 className="text-display-lg font-display font-bold text-ink">
-              What we build
-            </h2>
+        <FadeContent delay={0.1}>
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+            <div>
+              <p className="section-label mb-4">Our Services</p>
+              <h2 className="text-display-lg font-display font-bold text-ink">
+                What we build
+              </h2>
+            </div>
+            <Link href="/services" className="btn-ghost whitespace-nowrap">
+              Full details →
+            </Link>
           </div>
-          <Link href="/services" className="btn-ghost whitespace-nowrap">
-            Full details →
-          </Link>
-        </div>
+        </FadeContent>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-4" staggerDelay={0.1}>
           {SERVICES.map((service, i) => (
             <Link
               key={service.id}
@@ -71,7 +74,7 @@ export default function ServicesSection() {
               </span>
             </Link>
           ))}
-        </div>
+        </StaggerContainer>
 
       </div>
     </section>

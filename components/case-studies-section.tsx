@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { CASE_STUDIES } from '@/lib/data'
+import { FadeContent, StaggerContainer } from '@/components/animations'
 
 export default function CaseStudiesSection() {
   const featured = CASE_STUDIES.filter(c => c.featured)
@@ -10,19 +11,21 @@ export default function CaseStudiesSection() {
     <section className="py-24 md:py-32 bg-surface-warm">
       <div className="max-w-site mx-auto px-6 lg:px-10">
 
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
-          <div>
-            <p className="section-label mb-4">Case Studies</p>
-            <h2 className="text-display-lg font-display font-bold text-ink">
-              What we've built
-            </h2>
+        <FadeContent delay={0.1}>
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+            <div>
+              <p className="section-label mb-4">Case Studies</p>
+              <h2 className="text-display-lg font-display font-bold text-ink">
+                What we've built
+              </h2>
+            </div>
+            <Link href="/work" className="btn-ghost whitespace-nowrap">
+              All 10 projects →
+            </Link>
           </div>
-          <Link href="/work" className="btn-ghost whitespace-nowrap">
-            All 10 projects →
-          </Link>
-        </div>
+        </FadeContent>
 
-        <div className="flex flex-col gap-4">
+        <StaggerContainer className="flex flex-col gap-4" staggerDelay={0.15}>
           {featured.map((study, i) => (
             <Link
               key={study.id}
@@ -106,7 +109,7 @@ export default function CaseStudiesSection() {
               </div>
             </Link>
           ))}
-        </div>
+        </StaggerContainer>
 
       </div>
     </section>

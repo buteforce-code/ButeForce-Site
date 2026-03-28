@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { CASE_STUDIES } from '@/lib/data'
+import { FadeContent, StaggerContainer } from '@/components/animations'
 
 const FILTERS = ['All', 'AI Automation', 'Computer Vision', 'AI Agents', 'Document AI']
 
@@ -33,11 +34,11 @@ export default function WorkGrid() {
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-4" staggerDelay={0.05}>
         {filtered.map((study, i) => (
-          <Link
-            key={study.id}
-            href={`/work/${study.slug}`}
+          <FadeContent key={study.id}>
+            <Link
+              href={`/work/${study.slug}`}
             className="group bg-surface-warm border border-surface-border rounded-card overflow-hidden hover:border-ink/20 hover:shadow-md transition-all duration-200"
           >
             <div className="p-8">
@@ -83,8 +84,9 @@ export default function WorkGrid() {
               <div className="h-full bg-yellow w-0 group-hover:w-full transition-all duration-500 ease-out" />
             </div>
           </Link>
+          </FadeContent>
         ))}
-      </div>
+      </StaggerContainer>
 
       {/* Count */}
       <p className="font-mono text-xs tracking-widest uppercase text-ink-faint mt-8 text-center">

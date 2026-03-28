@@ -12,10 +12,11 @@ export const SITE = {
 
 // ── NAV ───────────────────────────────────────────────────
 export const NAV_LINKS = [
-  { label: 'Services', href: '/services' },
-  { label: 'Work',     href: '/work' },
-  { label: 'Blog',     href: '/blog' },
-  { label: 'About',    href: '/about' },
+  { label: 'Services',   href: '/services' },
+  { label: 'Work',       href: '/work' },
+  { label: 'Blog',       href: '/blog' },
+  { label: 'About',      href: '/about' },
+  { label: 'Free Audit', href: '/lp/ai-audit', highlight: true },
 ]
 
 // ── PAIN LINES (the psychological scroll section) ─────────

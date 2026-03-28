@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { NAV_LINKS } from '@/lib/data'
+import { motion, AnimatePresence } from 'framer-motion'
 import BrandLogo from '@/components/brand-logo'
 import ThemeToggle from '@/components/theme-toggle'
 
@@ -44,16 +45,28 @@ export default function Nav() {
         <ul className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map(link => (
             <li key={link.href}>
-              <Link
-                href={link.href}
-                className={`font-mono text-xs tracking-widest uppercase transition-colors duration-150 ${
-                  pathname === link.href
-                    ? (useLightHeader ? 'text-white' : 'text-ink')
-                    : (useLightHeader ? 'text-white/70 hover:text-white' : 'text-ink-faint hover:text-ink')
-                }`}
-              >
-                {link.label}
-              </Link>
+              {link.highlight ? (
+                <Link
+                  href={link.href}
+                  className={`font-mono text-xs tracking-widest uppercase transition-colors duration-150 relative group ${
+                    useLightHeader ? 'text-yellow hover:text-yellow/80' : 'text-yellow-dim hover:text-yellow'
+                  }`}
+                >
+                  {link.label}
+                  <span className="absolute -bottom-0.5 left-0 right-0 h-px bg-current opacity-40 scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
+                </Link>
+              ) : (
+                <Link
+                  href={link.href}
+                  className={`font-mono text-xs tracking-widest uppercase transition-colors duration-150 ${
+                    pathname === link.href
+                      ? (useLightHeader ? 'text-white' : 'text-ink')
+                      : (useLightHeader ? 'text-white/70 hover:text-white' : 'text-ink-faint hover:text-ink')
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
@@ -81,29 +94,62 @@ export default function Nav() {
         </button>
       </nav>
 
-      {/* Mobile menu */}
-      <div className={`md:hidden transition-all duration-300 overflow-hidden ${menuOpen ? 'max-h-96' : 'max-h-0'}`}>
-        <div className="bg-surface border-t border-surface-border px-6 py-6 flex flex-col gap-5">
-          <ThemeToggle showLabel className="w-fit" />
-          {NAV_LINKS.map(link => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="font-mono text-sm tracking-widest uppercase text-ink-muted hover:text-ink"
-              onClick={() => setMenuOpen(false)}
-            >
-              {link.label}
-            </Link>
-          ))}
-          <Link
-            href="/contact"
-            className="btn-primary text-xs w-fit mt-2"
-            onClick={() => setMenuOpen(false)}
+      {/* Mobile menu - Staggered Dropdown */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="md:hidden overflow-hidden bg-surface border-t border-surface-border origin-top"
           >
-            Start a project →
-          </Link>
-        </div>
-      </div>
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: {
+                    staggerChildren: 0.05,
+                    delayChildren: 0.1,
+                  },
+                },
+              }}
+              className="px-6 py-6 flex flex-col gap-5"
+            >
+              <motion.div variants={{ hidden: { opacity: 0, y: -10 }, visible: { opacity: 1, y: 0 } }}>
+                <ThemeToggle showLabel className="w-fit" />
+              </motion.div>
+              {NAV_LINKS.map(link => (
+                <motion.div key={link.href} variants={{ hidden: { opacity: 0, y: -10 }, visible: { opacity: 1, y: 0 } }}>
+                  <Link
+                    href={link.href}
+                    className={`font-mono text-sm tracking-widest uppercase ${
+                      link.highlight
+                        ? 'text-yellow-dim hover:text-yellow'
+                        : 'text-ink-muted hover:text-ink'
+                    }`}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
+              ))}
+              <motion.div variants={{ hidden: { opacity: 0, scale: 0.9 }, visible: { opacity: 1, scale: 1 } }}>
+                <Link
+                  href="/contact"
+                  className="btn-primary text-xs w-fit mt-2 inline-block transition-transform hover:scale-105 active:scale-95"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Start a project →
+                </Link>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   )
 }

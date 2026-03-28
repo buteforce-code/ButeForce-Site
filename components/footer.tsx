@@ -71,26 +71,6 @@ export default function Footer() {
                   {SITE.email}
                 </a>
               </li>
-              <li>
-                <a
-                  href={SITE.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-body text-sm text-white/40 hover:text-white transition-colors"
-                >
-                  LinkedIn
-                </a>
-              </li>
-              <li>
-                <a
-                  href={SITE.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-body text-sm text-white/40 hover:text-white transition-colors"
-                >
-                  GitHub
-                </a>
-              </li>
             </ul>
           </div>
         </div>

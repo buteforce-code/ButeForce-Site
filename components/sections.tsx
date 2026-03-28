@@ -4,20 +4,24 @@ import { useState } from 'react'
 import { COMPARISON_ROWS, TECH_STACK, FAQ, TESTIMONIALS } from '@/lib/data'
 import Link from 'next/link'
 import BrandLogo from '@/components/brand-logo'
+import { FadeContent, StaggerContainer } from '@/components/animations'
 
 // ── COMPARISON TABLE ──────────────────────────────────────
 export function ComparisonSection() {
   return (
     <section className="py-24 md:py-32 bg-surface-warm">
       <div className="max-w-site mx-auto px-6 lg:px-10">
-        <div className="mb-16">
-          <p className="section-label mb-4">The Difference</p>
-          <h2 className="text-display-lg font-display font-bold text-ink">
-            Why it matters who builds it
-          </h2>
-        </div>
+        <FadeContent delay={0.1}>
+          <div className="mb-16">
+            <p className="section-label mb-4">The Difference</p>
+            <h2 className="text-display-lg font-display font-bold text-ink">
+              Why it matters who builds it
+            </h2>
+          </div>
+        </FadeContent>
 
-        <div className="overflow-x-auto">
+        <FadeContent delay={0.2} yOffset={20}>
+          <div className="overflow-x-auto">
           <table className="w-full min-w-[560px]">
             <thead>
               <tr>
@@ -62,6 +66,7 @@ export function ComparisonSection() {
             </tbody>
           </table>
         </div>
+        </FadeContent>
       </div>
     </section>
   )
@@ -72,23 +77,25 @@ export function TechStackSection() {
   return (
     <section className="py-20 bg-surface border-y border-surface-border">
       <div className="max-w-site mx-auto px-6 lg:px-10">
-        <p className="section-label mb-10">Technologies</p>
+        <FadeContent delay={0.1}>
+          <p className="section-label mb-10">Technologies</p>
+        </FadeContent>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
+        <StaggerContainer className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4" staggerDelay={0.05}>
           {TECH_STACK.map(tech => (
-            <div
-              key={tech.num}
-              className="flex flex-col items-center gap-2 p-4 rounded-card border border-surface-border hover:border-ink/15 hover:bg-surface-warm transition-all duration-200 group"
-            >
+              <FadeContent
+                key={tech.num}
+                className="flex flex-col items-center gap-2 p-4 rounded-card border border-surface-border hover:border-ink/15 hover:bg-surface-warm transition-all duration-200 group"
+              >
               <span className="font-mono text-[10px] tracking-widest uppercase text-ink-faint group-hover:text-ink-muted transition-colors">
                 {tech.num}
               </span>
               <span className="font-body text-sm text-ink-soft font-medium text-center">
                 {tech.name}
               </span>
-            </div>
+            </FadeContent>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   )
@@ -99,11 +106,13 @@ export function TestimonialsSection() {
   return (
     <section className="py-24 md:py-32 bg-surface-warm">
       <div className="max-w-site mx-auto px-6 lg:px-10">
-        <p className="section-label mb-16">What clients say</p>
+        <FadeContent delay={0.1}>
+          <p className="section-label mb-16">What clients say</p>
+        </FadeContent>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6" staggerDelay={0.1}>
           {TESTIMONIALS.map((t, i) => (
-            <div
+            <FadeContent
               key={i}
               className="bg-surface border border-surface-border rounded-card p-8 flex flex-col gap-6 hover:shadow-sm hover:border-ink/10 transition-all duration-200"
             >
@@ -127,9 +136,9 @@ export function TestimonialsSection() {
                   <p className="font-mono text-[10px] tracking-wide uppercase text-ink-faint">{t.company}</p>
                 </div>
               </div>
-            </div>
+            </FadeContent>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   )
@@ -143,14 +152,16 @@ export function FAQSection() {
     <section className="py-24 md:py-32 bg-surface">
       <div className="max-w-site mx-auto px-6 lg:px-10">
         <div className="max-w-prose-wide mx-auto">
-          <p className="section-label mb-4">FAQ</p>
-          <h2 className="text-display-lg font-display font-bold text-ink mb-12">
-            Questions we get
-          </h2>
+          <FadeContent delay={0.1}>
+            <p className="section-label mb-4">FAQ</p>
+            <h2 className="text-display-lg font-display font-bold text-ink mb-12">
+              Questions we get
+            </h2>
+          </FadeContent>
 
-          <div className="flex flex-col">
+          <StaggerContainer className="flex flex-col" staggerDelay={0.05}>
             {FAQ.map((item, i) => (
-              <div key={i} className="border-t border-surface-border last:border-b">
+              <FadeContent key={i} className="border-t border-surface-border last:border-b">
                 <button
                   className="w-full text-left py-5 flex items-start justify-between gap-6 group"
                   onClick={() => setOpen(open === i ? null : i)}
@@ -168,9 +179,9 @@ export function FAQSection() {
                     {item.a}
                   </p>
                 </div>
-              </div>
+              </FadeContent>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </div>
     </section>
@@ -183,21 +194,28 @@ export function CTASection() {
     <section className="bg-black py-24 md:py-36 border-t border-surface-border">
       <div className="max-w-site mx-auto px-6 lg:px-10 text-center">
 
-        <p className="font-mono text-xs tracking-widest uppercase text-white/30 mb-8">
-          Ready to start?
-        </p>
+        <FadeContent delay={0.1}>
+          <p className="font-mono text-xs tracking-widest uppercase text-white/30 mb-8">
+            Ready to start?
+          </p>
+        </FadeContent>
 
-        <h2 className="text-display-lg font-display font-bold text-white mb-6 leading-tight">
-          Done doing it manually?
-        </h2>
+        <FadeContent delay={0.2}>
+          <h2 className="text-display-lg font-display font-bold text-white mb-6 leading-tight">
+            Done doing it manually?
+          </h2>
+        </FadeContent>
 
-        <p className="font-body text-lg text-white/50 max-w-lg mx-auto leading-relaxed mb-12">
-          Tell us the one process that costs your team the most time.
-          We'll tell you exactly how we'd automate it.
-        </p>
+        <FadeContent delay={0.3}>
+          <p className="font-body text-lg text-white/50 max-w-lg mx-auto leading-relaxed mb-12">
+            Tell us the one process that costs your team the most time.
+            We'll tell you exactly how we'd automate it.
+          </p>
+        </FadeContent>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link href="/contact" className="btn-primary">
+        <FadeContent delay={0.4} yOffset={20}>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link href="/contact" className="btn-primary">
             Start a project →
           </Link>
           <a
@@ -206,7 +224,8 @@ export function CTASection() {
           >
             admin@buteforce.com
           </a>
-        </div>
+          </div>
+        </FadeContent>
       </div>
     </section>
   )
