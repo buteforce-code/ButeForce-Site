@@ -25,7 +25,7 @@ export default function ServicesSection() {
             <Link
               key={service.id}
               href={`/services#${service.slug}`}
-              className="group relative bg-surface-warm border border-surface-border rounded-card p-8 hover:border-ink/20 hover:shadow-md transition-all duration-200 overflow-hidden"
+              className="group relative bg-surface-off shadow-sm border border-surface-border rounded-card p-8 hover:border-ink/20 hover:shadow-md transition-all duration-200 overflow-hidden"
             >
               {/* Left yellow accent bar — appears on hover */}
               <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-yellow scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-bottom rounded-l-card" />

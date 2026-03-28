@@ -50,11 +50,11 @@ export default function Hero() {
 
         {/* Sub — what we actually do, no fluff */}
         <div className="flex flex-col gap-5 mb-12">
-          <p className="font-body text-lg md:text-xl text-neutral-300 max-w-2xl leading-relaxed">
+          <p className="font-body text-lg md:text-xl text-white/90 drop-shadow-sm max-w-2xl leading-relaxed">
             We build the AI systems that take it off their plate —
             custom, production-ready, and faster than you'd expect.
           </p>
-          <p className="font-mono text-[11px] md:text-xs tracking-wide uppercase text-neutral-400">
+          <p className="font-mono text-[11px] md:text-xs tracking-wide uppercase text-neutral-200 drop-shadow-sm">
             No consultants. No pilot projects. Working systems.
           </p>
         </div>

@@ -83,7 +83,7 @@ body {
 
   /* ── BUTTON ─────────────────────────────────────────────── */
   .btn-primary {
-    @apply inline-flex items-center gap-2 bg-yellow text-ink font-display font-bold
+    @apply inline-flex items-center gap-2 bg-yellow text-black font-display font-bold
            text-sm tracking-wide uppercase px-7 py-3.5 rounded-btn
            transition-all duration-150 hover:bg-yellow-dim active:scale-[0.98];
   }
