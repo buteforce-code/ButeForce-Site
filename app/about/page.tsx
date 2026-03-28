@@ -92,14 +92,14 @@ export default function AboutPage() {
                 { v: '99.2%', l: 'Highest accuracy achieved' },
                 { v: '< 1s', l: 'Fastest processing time' },
               ].map(({ v, l }) => (
-                <FadeContent key={l} className="text-center md:text-left">
+                <div key={l} className="w-full h-full text-center md:text-left">
                   <div className="font-display font-bold text-4xl md:text-5xl text-ink tracking-tight mb-2">
                     {v}
                   </div>
                   <div className="font-mono text-[10px] tracking-widest uppercase text-ink-faint">
                     {l}
                   </div>
-                </FadeContent>
+                </div>
               ))}
             </StaggerContainer>
           </div>

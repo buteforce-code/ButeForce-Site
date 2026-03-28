@@ -30,7 +30,7 @@ export default function CaseStudiesSection() {
             <Link
               key={study.id}
               href={`/work/${study.slug}`}
-              className="group bg-surface border border-surface-border rounded-card overflow-hidden hover:border-ink/20 hover:shadow-lg transition-all duration-300"
+              className="block w-full h-full group bg-surface border border-surface-border rounded-card overflow-hidden hover:border-ink/20 hover:shadow-lg transition-all duration-300"
             >
               <div className="p-8 md:p-10">
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">

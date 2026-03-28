@@ -83,9 +83,9 @@ export function TechStackSection() {
 
         <StaggerContainer className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4" staggerDelay={0.05}>
           {TECH_STACK.map(tech => (
-              <FadeContent
+              <div
                 key={tech.num}
-                className="flex flex-col items-center gap-2 p-4 rounded-card border border-surface-border hover:border-ink/15 hover:bg-surface-warm transition-all duration-200 group"
+                className="flex flex-col w-full h-full items-center justify-center gap-2 p-4 rounded-card border border-surface-border hover:border-ink/15 hover:bg-surface-warm transition-all duration-200 group"
               >
               <span className="font-mono text-[10px] tracking-widest uppercase text-ink-faint group-hover:text-ink-muted transition-colors">
                 {tech.num}
@@ -93,7 +93,7 @@ export function TechStackSection() {
               <span className="font-body text-sm text-ink-soft font-medium text-center">
                 {tech.name}
               </span>
-            </FadeContent>
+            </div>
           ))}
         </StaggerContainer>
       </div>
@@ -112,9 +112,9 @@ export function TestimonialsSection() {
 
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6" staggerDelay={0.1}>
           {TESTIMONIALS.map((t, i) => (
-            <FadeContent
+            <div
               key={i}
-              className="bg-surface border border-surface-border rounded-card p-8 flex flex-col gap-6 hover:shadow-sm hover:border-ink/10 transition-all duration-200"
+              className="bg-surface w-full h-full border border-surface-border rounded-card p-8 flex flex-col gap-6 hover:shadow-sm hover:border-ink/10 transition-all duration-200"
             >
               {/* Quote mark */}
               <div className="font-display text-4xl text-yellow leading-none select-none">"</div>
@@ -136,7 +136,7 @@ export function TestimonialsSection() {
                   <p className="font-mono text-[10px] tracking-wide uppercase text-ink-faint">{t.company}</p>
                 </div>
               </div>
-            </FadeContent>
+            </div>
           ))}
         </StaggerContainer>
       </div>

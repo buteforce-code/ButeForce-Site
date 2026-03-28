@@ -153,7 +153,7 @@ export function StaggerContainer({
       animate={isInView ? 'visible' : 'hidden'}
     >
       {items.map((child, i) => (
-        <motion.div key={i} variants={itemVariants}>
+        <motion.div key={i} variants={itemVariants} className="w-full h-full">
           {child}
         </motion.div>
       ))}

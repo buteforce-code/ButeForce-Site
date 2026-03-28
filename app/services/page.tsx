@@ -147,10 +147,10 @@ export default function ServicesPage() {
                       {relatedWork.length > 0 ? (
                         <StaggerContainer className="flex flex-col gap-4" staggerDelay={0.1}>
                           {relatedWork.map(work => (
-                            <FadeContent key={work.id}>
                               <Link
+                                key={work.id}
                                 href={`/work/${work.slug}`}
-                                className="group flex flex-col gap-4 p-6 bg-surface border border-surface-border rounded-card hover:border-ink/20 hover:shadow-sm transition-all"
+                                className="group flex flex-col w-full h-full gap-4 p-6 bg-surface border border-surface-border rounded-card hover:border-ink/20 hover:shadow-sm transition-all"
                               >
                                 <div className="flex items-start justify-between gap-4">
                                   <h4 className="font-display font-bold text-base text-ink leading-snug group-hover:text-ink-soft transition-colors">
@@ -169,7 +169,6 @@ export default function ServicesPage() {
                                   ))}
                                 </div>
                               </Link>
-                            </FadeContent>
                           ))}
                         </StaggerContainer>
                       ) : (

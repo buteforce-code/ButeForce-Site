@@ -137,7 +137,7 @@ export function LpCostSection() {
 
         <StaggerContainer className="grid grid-cols-1 lg:grid-cols-3 gap-px bg-surface-border rounded-2xl overflow-hidden" staggerDelay={0.12}>
           {COSTS.map((c) => (
-            <TiltCard key={c.num} className="bg-surface-warm p-8 lg:p-10 flex flex-col gap-6 group hover:bg-surface transition-colors duration-300" maxTilt={4}>
+            <TiltCard key={c.num} className="bg-surface-warm p-8 lg:p-10 flex flex-col gap-6 group hover:bg-surface transition-colors duration-300 w-full h-full" maxTilt={4}>
               <span className="font-mono text-[10px] tracking-widest uppercase text-ink-faint">{c.num}</span>
               <h3 className="font-display font-bold text-lg text-ink leading-snug">{c.headline}</h3>
               <p className="font-body text-sm text-ink-muted leading-relaxed flex-1">{c.body}</p>
@@ -264,7 +264,7 @@ export function LpProofStrip() {
 
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6" staggerDelay={0.15}>
           {TESTIMONIALS.map((t, i) => (
-            <TiltCard key={i} className="bg-surface border border-surface-border rounded-card p-8 flex flex-col gap-5" maxTilt={5}>
+            <TiltCard key={i} className="bg-surface border border-surface-border rounded-card p-8 flex flex-col gap-5 w-full h-full" maxTilt={5}>
               <span className="font-display text-3xl text-yellow-dim leading-none select-none">"</span>
               <p className="font-body text-sm text-ink-muted leading-relaxed flex-1 italic">{t.quote}</p>
               <div className="flex items-center gap-3 pt-5 border-t border-surface-border">
@@ -304,7 +304,7 @@ export function LpTwoPaths() {
 
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6" staggerDelay={0.15}>
           {/* Path A — Book the call */}
-          <div className="bg-surface-warm border border-surface-border rounded-2xl p-10 lg:p-12 flex flex-col gap-6 relative overflow-hidden group hover:border-yellow-dim transition-all duration-300">
+          <div className="bg-surface-warm border border-surface-border w-full h-full rounded-2xl p-10 lg:p-12 flex flex-col gap-6 relative overflow-hidden group hover:border-yellow-dim transition-all duration-300">
             <div
               className="absolute top-0 right-0 w-64 h-64 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
               style={{ background: 'radial-gradient(ellipse at 80% 10%, rgba(255,252,1,0.15) 0%, transparent 60%)' }}
@@ -337,7 +337,7 @@ export function LpTwoPaths() {
           </div>
 
           {/* Path B — Email first */}
-          <div className="bg-surface-warm border border-surface-border rounded-2xl p-10 lg:p-12 flex flex-col gap-6">
+          <div className="bg-surface-warm border border-surface-border w-full h-full rounded-2xl p-10 lg:p-12 flex flex-col gap-6">
             <span className="font-mono text-[10px] tracking-widest uppercase text-ink-faint">Option B</span>
             <h3 className="font-display font-bold text-xl text-ink">Get the AI Audit framework first</h3>
             <p className="font-body text-sm text-ink-muted leading-relaxed flex-1">

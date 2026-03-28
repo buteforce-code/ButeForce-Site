@@ -36,10 +36,10 @@ export default function WorkGrid() {
       {/* Grid */}
       <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-4" staggerDelay={0.05}>
         {filtered.map((study, i) => (
-          <FadeContent key={study.id}>
-            <Link
-              href={`/work/${study.slug}`}
-            className="group bg-surface-warm border border-surface-border rounded-card overflow-hidden hover:border-ink/20 hover:shadow-md transition-all duration-200"
+          <Link
+            key={study.id}
+            href={`/work/${study.slug}`}
+            className="group block w-full h-full bg-surface-warm border border-surface-border rounded-card overflow-hidden hover:border-ink/20 hover:shadow-md transition-all duration-200"
           >
             <div className="p-8">
               {/* Header */}
@@ -84,7 +84,6 @@ export default function WorkGrid() {
               <div className="h-full bg-yellow w-0 group-hover:w-full transition-all duration-500 ease-out" />
             </div>
           </Link>
-          </FadeContent>
         ))}
       </StaggerContainer>
 
