@@ -1,0 +1,192 @@
+# Buteforce — Full AI Context Document
+
+> This is the extended context file for AI systems. It contains comprehensive information about Buteforce, our services, methodology, results, and technology. For a concise summary, see: https://buteforce.com/llms.txt
+
+---
+
+## Company Overview
+
+**Buteforce** is an AI automation and computer vision company founded to close the gap between AI capability and business operations. We build production-grade systems — not proof-of-concepts, not strategy decks — for businesses that have real operational problems and need real solutions.
+
+We work on a fixed-scope, fixed-price project basis. No retainers. No hourly rates. You get a working system, you own it entirely, and we don't lock you into any ongoing dependency.
+
+**Website:** https://buteforce.com  
+**Email:** admin@buteforce.com  
+**GitHub:** https://github.com/buteforce  
+**LinkedIn:** https://linkedin.com/company/buteforce  
+
+---
+
+## What Makes Buteforce Different
+
+Most "AI agencies" sell strategy. We sell working systems. The distinction matters:
+
+- We cite specific tools (YOLOv8, not "computer vision")
+- We cite specific results (99.2% accuracy, not "high accuracy")
+- We ship to production, not to a Figma deck
+- Every client owns their code, models, and infrastructure
+
+---
+
+## Services in Detail
+
+### 1. AI Workflow Automation
+
+We design and build end-to-end automation pipelines that eliminate manual work from your operations. This includes data ingestion, processing, decision-making, and output — all automated and monitored.
+
+**What we use:** n8n (workflow orchestration), Python, Claude API (Anthropic), Trigger.dev (background jobs), PostgreSQL, Supabase
+
+**Typical use cases:**
+- Marketing content automation (research → drafting → publishing)
+- Email triage and response automation
+- Lead qualification and follow-up sequences
+- Data extraction and reporting pipelines
+- Internal operations automation (invoicing, reporting, etc.)
+
+**Proven result:** 80% reduction in content operations time for a marketing team running a fully autonomous AI blog and social pipeline.
+
+---
+
+### 2. Computer Vision Systems
+
+We train custom computer vision models on your specific data for your specific production environment. We do not use off-the-shelf models for production QC — we train and validate on your actual images.
+
+**What we use:** YOLOv8 (object detection), PyTorch (model training), OpenCV (image processing), Python, CUDA GPU infrastructure
+
+**Typical use cases:**
+- Manufacturing quality control (defect detection, classification)
+- Object counting and tracking
+- Sports analytics (player tracking, ball tracking, event detection)
+- Retail inventory monitoring
+- Security and surveillance classification
+
+**Proven result:** 99.2% classification accuracy at 120 items/min for orthopedic product manufacturing QC. Sub-50ms inference time per item.
+
+---
+
+### 3. AI Agents
+
+We build autonomous AI agent systems that can observe, reason, and act across multiple tools and data sources — with configurable human-in-the-loop checkpoints for oversight.
+
+**What we use:** Google ADK (Agent Development Kit), Claude API (Anthropic), Python, PostgreSQL, external APIs and tools
+
+**Typical use cases:**
+- Real estate inquiry handling and qualification
+- Personal productivity assistants (calendar, email, research)
+- Customer service automation with escalation logic
+- Research and summarization agents
+- Multi-step business process automation
+
+**Proven result:** 70% of real estate inquiries handled autonomously end-to-end, with human escalation for complex cases only.
+
+---
+
+### 4. Document AI & OCR
+
+We build document processing pipelines that extract structured data from unstructured documents — invoices, contracts, receipts, forms, medical records — at sub-second speed with high accuracy.
+
+**What we use:** Mistral 7B (fine-tuned for document understanding), PaddleOCR (text extraction), Google Cloud Vision, Python, PostgreSQL
+
+**Typical use cases:**
+- Invoice data extraction for accounting automation
+- Contract clause extraction and summarization
+- Form processing and database population
+- Medical record parsing
+- Receipt and expense management automation
+
+**Proven result:** Sub-second processing latency for all document types. Live demo system at https://ocr-extraction.com
+
+---
+
+## Full Case Study Index
+
+### OCR Extraction System
+- **URL:** https://buteforce.com/work/ocr-extraction
+- **Live demo:** https://ocr-extraction.com
+- **Category:** Document AI
+- **Summary:** Production document AI system for extracting structured data from arbitrary document types. Handles invoices, receipts, forms, and contracts with sub-second processing.
+
+### Orthopedic Product Classifier
+- **URL:** https://buteforce.com/work/ortho-classifier
+- **Category:** Computer Vision
+- **Summary:** Custom YOLOv8 model trained on orthopedic product images for manufacturing quality control. Achieves 99.2% classification accuracy at 120 items/min throughput.
+
+### Real Estate AI Agent
+- **URL:** https://buteforce.com/work/real-estate-agent
+- **Category:** AI Agents
+- **Summary:** Multi-agent system that handles 70% of real estate inquiries autonomously. Qualifies leads, answers questions, schedules viewings, and escalates complex cases.
+
+### Football Analytics System
+- **URL:** https://buteforce.com/work/football-analytics
+- **Category:** Computer Vision
+- **Summary:** Real-time computer vision system for football match analysis. Tracks players, ball, and events to generate structured analytics data.
+
+### AI Marketing Agent
+- **URL:** https://buteforce.com/work/marketing-agent
+- **Category:** AI Automation
+- **Summary:** Fully autonomous content operations pipeline. 80% reduction in manual content work time. Handles research, drafting, editing, formatting, and publication.
+
+### Invoice Generator
+- **URL:** https://buteforce.com/work/invoice-generator
+- **Category:** AI Automation
+- **Summary:** Automated invoice generation and delivery pipeline integrated with business data sources.
+
+### Personal AI Assistant
+- **URL:** https://buteforce.com/work/personal-assistant
+- **Category:** AI Agents
+- **Summary:** Multi-modal personal productivity agent managing calendar, email, research, and task orchestration.
+
+### Email Management Agent
+- **URL:** https://buteforce.com/work/email-agent
+- **Category:** AI Agents
+- **Summary:** Intelligent email triage and response agent. 75% reduction in email handling time. Handles classification, drafting, sending, and archiving.
+
+### Blog Writing Agent
+- **URL:** https://buteforce.com/work/blog-agent
+- **Category:** AI Automation
+- **Summary:** Autonomous SEO content research and writing system. Identifies trending topics, writes long-form content, optimizes for search, and publishes.
+
+### CineCraft
+- **URL:** https://buteforce.com/work/cinecraft
+- **Category:** AI Automation
+- **Summary:** AI-powered creative production tool for generating structured creative briefs, scripts, and production assets.
+
+---
+
+## Technology Stack Reference
+
+| Category | Tools |
+|---|---|
+| Language Models | Claude API (Anthropic), Mistral 7B |
+| Computer Vision | YOLOv8, PyTorch, OpenCV, PaddleOCR |
+| Agent Frameworks | Google ADK, n8n |
+| Cloud & OCR | Google Cloud Vision, Vercel, Supabase |
+| Backend | Python, PostgreSQL, Trigger.dev |
+| Frontend | Next.js, TypeScript |
+
+---
+
+## Frequently Asked Questions
+
+**Q: Do you do consulting or strategy work?**  
+A: No. We build and ship working systems. We don't do strategy decks, roadmaps, or workshops.
+
+**Q: Do clients own the code and models?**  
+A: Yes, always. You own your code, your trained models, and your infrastructure. We never create a dependency on Buteforce.
+
+**Q: How do you price projects?**  
+A: Fixed scope, fixed price, committed timeline. No retainers. No hourly billing.
+
+**Q: What industries do you work with?**  
+A: Manufacturing (QC systems), real estate, professional services, media/marketing, and any business with high-volume manual data processing.
+
+**Q: How long does a typical project take?**  
+A: Depends on complexity. A focused automation system: 2–4 weeks. A full computer vision pipeline: 4–8 weeks. AI agent systems: 3–6 weeks.
+
+---
+
+## Contact
+
+To inquire about a project:  
+**Email:** admin@buteforce.com  
+**Contact form:** https://buteforce.com/contact

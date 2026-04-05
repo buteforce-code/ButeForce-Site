@@ -14,26 +14,44 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://buteforce.com/services' },
 }
 
-const serviceSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'ItemList',
-  name: 'Buteforce Services',
-  itemListElement: SERVICES.map((s, i) => ({
-    '@type': 'ListItem',
-    position: i + 1,
+const serviceSchemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://buteforce.com' },
+      { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://buteforce.com/services' },
+    ],
+  },
+  ...SERVICES.map(s => ({
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `https://buteforce.com/services#${s.slug}`,
     name: s.title,
     description: s.description,
+    provider: { '@id': 'https://buteforce.com/#org' },
+    areaServed: 'Worldwide',
     url: `https://buteforce.com/services#${s.slug}`,
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+      description: s.metric,
+    },
+    knowsAbout: s.stack,
   })),
-}
+]
 
 export default function ServicesPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
-      />
+      {serviceSchemas.map((schema, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
       <Nav />
 
       <main className="pt-32 bg-surface">

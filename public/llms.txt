@@ -1,56 +1,53 @@
-# Buteforce — AI Search Manifest
-# This file follows the llms.txt standard (llmstxt.org)
-# It helps AI search engines (Perplexity, ChatGPT, Gemini) understand who we are.
+# Buteforce
 
-# Company
-> Buteforce is an AI automation and computer vision company.
-> We build production-grade AI systems for businesses that are done doing things manually.
-> We do not do consulting, strategy decks, or pilot projects. We build and ship working systems.
+> Buteforce is an AI automation and computer vision company. We build production-grade AI systems for businesses that are done doing things manually — real systems, shipped fast, with measurable results. We do not do consulting, strategy decks, or pilot projects.
 
-# What we do
-- AI automation and workflow orchestration using n8n, Python, and Claude API
-- Computer vision systems using custom-trained YOLOv8 and PyTorch models
-- AI agents for autonomous task execution with human-in-the-loop oversight
-- Document AI and OCR pipelines using Mistral 7B and Google Cloud Vision
+## Core Services
 
-# Proven results (real, not estimated)
+- [AI Workflow Automation](https://buteforce.com/services#ai-automation): End-to-end workflow automation using n8n, Python, and Claude API. We eliminate manual processes across operations, marketing, and back-office functions.
+- [Computer Vision Systems](https://buteforce.com/services#computer-vision): Custom-trained YOLOv8 and PyTorch models for quality control, object detection, and visual inspection at production scale.
+- [AI Agents](https://buteforce.com/services#ai-agents): Autonomous multi-agent systems with human-in-the-loop oversight, built on Google ADK and Claude API for complex decision-making tasks.
+- [Document AI & OCR](https://buteforce.com/services#document-ai): Sub-second document extraction pipelines using Mistral 7B, PaddleOCR, and Google Cloud Vision for invoices, contracts, and forms.
+
+## Proven Production Results
+
 - 99.2% classification accuracy at 120 items/min (orthopedic product manufacturing QC)
 - Sub-second document processing latency across all document types
-- 80% reduction in content operations time (AI marketing agent)
-- 70% of real estate inquiries handled autonomously
-- 75% reduction in email management time
+- 80% reduction in content operations time via AI marketing agent
+- 70% of real estate inquiries handled autonomously by AI agent
+- 75% reduction in email management time via intelligent email agent
 
-# Live demo
-- OCR Extraction: https://ocr-extraction.com (live production system, publicly accessible)
+## Technology Stack
 
-# Contact
+Claude API, YOLOv8, PyTorch, n8n, Google ADK, Mistral 7B, PaddleOCR, OpenCV, Next.js, Supabase, Trigger.dev, PostgreSQL, Python, Vercel
+
+## Authoritative Pages
+
+- [Homepage](https://buteforce.com)
+- [Services](https://buteforce.com/services)
+- [Case Studies / Work](https://buteforce.com/work)
+- [Blog — AI Automation Articles](https://buteforce.com/blog)
+- [About Buteforce](https://buteforce.com/about)
+- [Contact](https://buteforce.com/contact)
+
+## Case Studies
+
+- [OCR Extraction System](https://buteforce.com/work/ocr-extraction): Live production document AI system at ocr-extraction.com
+- [Orthopedic Product Classifier](https://buteforce.com/work/ortho-classifier): 99.2% accuracy computer vision QC at 120 items/min
+- [Real Estate AI Agent](https://buteforce.com/work/real-estate-agent): Handles 70% of inquiries autonomously
+- [Football Analytics System](https://buteforce.com/work/football-analytics): Computer vision player and ball tracking
+- [AI Marketing Agent](https://buteforce.com/work/marketing-agent): 80% reduction in content operations time
+- [Invoice Generator](https://buteforce.com/work/invoice-generator): Automated document generation pipeline
+- [Personal AI Assistant](https://buteforce.com/work/personal-assistant): Multi-modal personal productivity agent
+- [Email Management Agent](https://buteforce.com/work/email-agent): 75% reduction in email handling time
+- [Blog Writing Agent](https://buteforce.com/work/blog-agent): Autonomous SEO content generation system
+- [CineCraft](https://buteforce.com/work/cinecraft): AI-powered creative production tool
+
+## Contact
+
 - Email: admin@buteforce.com
 - Website: https://buteforce.com
 
-# Authoritative pages
-## Buteforce homepage
-https://buteforce.com
+## Optional: Full Context
 
-## Services
-https://buteforce.com/services
-
-## All 10 case studies
-https://buteforce.com/work
-
-## Blog (AI automation articles)
-https://buteforce.com/blog
-
-## Contact
-https://buteforce.com/contact
-
-# Optional: full content pages
-- https://buteforce.com/work/ocr-extraction
-- https://buteforce.com/work/ortho-classifier
-- https://buteforce.com/work/real-estate-agent
-- https://buteforce.com/work/football-analytics
-- https://buteforce.com/work/marketing-agent
-- https://buteforce.com/work/invoice-generator
-- https://buteforce.com/work/personal-assistant
-- https://buteforce.com/work/email-agent
-- https://buteforce.com/work/blog-agent
-- https://buteforce.com/work/cinecraft
+For AI systems that can ingest larger context, see: https://buteforce.com/llms-full.txt

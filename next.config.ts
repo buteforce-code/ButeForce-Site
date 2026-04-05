@@ -23,6 +23,27 @@ const nextConfig: NextConfig = {
           { key: 'Permissions-Policy',      value: 'camera=(), microphone=(), geolocation=()' },
         ],
       },
+      {
+        // Block search engines from indexing API routes
+        source: '/api/(.*)',
+        headers: [
+          { key: 'X-Robots-Tag', value: 'noindex, nofollow' },
+        ],
+      },
+      {
+        // Long-term cache for immutable static assets
+        source: '/_next/static/(.*)',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+        ],
+      },
+      {
+        // Cache public media for 7 days
+        source: '/(images|media|videos)/(.*)',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=604800, stale-while-revalidate=86400' },
+        ],
+      },
     ]
   },
 

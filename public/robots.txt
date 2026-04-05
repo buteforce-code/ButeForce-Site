@@ -1,20 +1,124 @@
+# ============================================================
+# buteforce.com — robots.txt
+# Updated: 2025 | Strategy: allow credible AI, block suspicious
+# ============================================================
+
+# ── Default: allow all well-behaved crawlers ─────────────────
 User-agent: *
 Allow: /
+Disallow: /api/
 
-# AI search crawlers — explicitly allowed
-User-agent: GPTBot
+# ── Google ───────────────────────────────────────────────────
+User-agent: Googlebot
 Allow: /
 
-User-agent: PerplexityBot
-Allow: /
-
+# Allow Google to use content for AI (Gemini, AI Overviews)
 User-agent: Google-Extended
 Allow: /
 
+# ── OpenAI ───────────────────────────────────────────────────
+# GPTBot: trains future GPT models
+User-agent: GPTBot
+Allow: /
+
+# OAI-SearchBot: powers ChatGPT search citations (high value)
+User-agent: OAI-SearchBot
+Allow: /
+
+# ── Anthropic / Claude ───────────────────────────────────────
 User-agent: anthropic-ai
 Allow: /
 
 User-agent: ClaudeBot
 Allow: /
 
+# ── Perplexity ───────────────────────────────────────────────
+User-agent: PerplexityBot
+Allow: /
+
+# ── Microsoft / Bing ─────────────────────────────────────────
+User-agent: Bingbot
+Allow: /
+
+# Powers Copilot and Bing AI citations
+User-agent: BingPreview
+Allow: /
+
+# ── xAI (Grok) ───────────────────────────────────────────────
+User-agent: Grok
+Allow: /
+
+# ── Apple ────────────────────────────────────────────────────
+User-agent: Applebot
+Allow: /
+
+# Powers Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+
+# ── Meta AI ──────────────────────────────────────────────────
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+# ── Cohere ───────────────────────────────────────────────────
+User-agent: cohere-ai
+Allow: /
+
+# ── Amazon ───────────────────────────────────────────────────
+User-agent: Amazonbot
+Allow: /
+
+# ── Common Crawl (feeds many AI research datasets) ───────────
+User-agent: CCBot
+Allow: /
+
+# ── DuckDuckGo ───────────────────────────────────────────────
+User-agent: DuckDuckBot
+Allow: /
+
+# ============================================================
+# BLOCKED: Suspicious, unverified, or data-scraping bots
+# ============================================================
+
+# ByteDance / TikTok — aggressive scraper, unverified purpose
+User-agent: Bytespider
+Disallow: /
+
+# Diffbot — commercial data extraction without consent
+User-agent: Diffbot
+Disallow: /
+
+# DataForSeo — SEO competitor data harvesting
+User-agent: DataForSeoBot
+Disallow: /
+
+# AhrefsBot — competitor scraping tool
+User-agent: AhrefsBot
+Disallow: /
+
+# SemrushBot — competitor scraping tool
+User-agent: SemrushBot
+Disallow: /
+
+# MJ12bot — unknown origin, aggressive crawler
+User-agent: MJ12bot
+Disallow: /
+
+# DotBot — Moz scraper, high volume low value
+User-agent: DotBot
+Disallow: /
+
+# PetalBot — unverified Chinese search bot
+User-agent: PetalBot
+Disallow: /
+
+# Scrapy — open-source scraper framework (usually bad actors)
+User-agent: Scrapy
+Disallow: /
+
+# ── Sitemap ──────────────────────────────────────────────────
 Sitemap: https://buteforce.com/sitemap.xml
+Sitemap: https://buteforce.com/server-sitemap.xml

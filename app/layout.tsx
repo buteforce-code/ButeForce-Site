@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Syne, Outfit, DM_Mono } from 'next/font/google'
-import Script from 'next/script'
+
 import './globals.css'
 
 const themeScript = `
@@ -106,28 +106,52 @@ export const viewport: Viewport = {
   initialScale: 1,
 }
 
-// ── JSON-LD ORGANIZATION SCHEMA ────────────────────────────
+// ── JSON-LD SCHEMAS ────────────────────────────────────────
 const organizationSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'Buteforce',
-  url: 'https://buteforce.com',
-  logo: 'https://buteforce.com/buteforce-wordmark.svg',
-  email: 'admin@buteforce.com',
-  description:
-    'AI automation and computer vision company building production-grade systems for businesses.',
-  sameAs: [
-    'https://linkedin.com/company/buteforce',
-    'https://github.com/buteforce',
-  ],
-  knowsAbout: [
-    'AI Automation',
-    'Computer Vision',
-    'Machine Learning',
-    'n8n Workflow Automation',
-    'Document AI',
-    'OCR',
-    'AI Agents',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://buteforce.com/#org',
+      name: 'Buteforce',
+      url: 'https://buteforce.com',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://buteforce.com/buteforce-wordmark.svg',
+        width: 200,
+        height: 40,
+      },
+      email: 'admin@buteforce.com',
+      description:
+        'AI automation and computer vision company building production-grade systems for businesses.',
+      sameAs: [
+        'https://linkedin.com/company/buteforce',
+        'https://github.com/buteforce',
+      ],
+      knowsAbout: [
+        'AI Automation',
+        'Computer Vision',
+        'Machine Learning',
+        'n8n Workflow Automation',
+        'Document AI',
+        'OCR',
+        'AI Agents',
+      ],
+      areaServed: 'Worldwide',
+      foundingDate: '2023',
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://buteforce.com/#website',
+      url: 'https://buteforce.com',
+      name: 'Buteforce',
+      publisher: { '@id': 'https://buteforce.com/#org' },
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: { '@type': 'EntryPoint', urlTemplate: 'https://buteforce.com/blog?q={search_term_string}' },
+        'query-input': 'required name=search_term_string',
+      },
+    },
   ],
 }
 

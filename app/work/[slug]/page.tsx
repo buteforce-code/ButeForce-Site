@@ -35,22 +35,45 @@ export default async function CaseStudyPage({ params }: Props) {
   const next = CASE_STUDIES[(idx + 1) % CASE_STUDIES.length]
   const prev = CASE_STUDIES[(idx - 1 + CASE_STUDIES.length) % CASE_STUDIES.length]
 
-  const caseStudySchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: study.title,
-    description: study.description,
-    author: { '@type': 'Organization', name: 'Buteforce' },
-    publisher: { '@type': 'Organization', name: 'Buteforce', url: 'https://buteforce.com' },
-    url: `https://buteforce.com/work/${slug}`,
-  }
+  const caseStudySchemas = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      '@id': `https://buteforce.com/work/${slug}/#article`,
+      headline: study.title,
+      description: study.description,
+      author: { '@id': 'https://buteforce.com/#org' },
+      publisher: { '@id': 'https://buteforce.com/#org' },
+      url: `https://buteforce.com/work/${slug}`,
+      mainEntityOfPage: `https://buteforce.com/work/${slug}`,
+      isPartOf: { '@id': 'https://buteforce.com/#website' },
+      about: {
+        '@type': 'Thing',
+        name: study.category,
+        description: study.description,
+      },
+      keywords: study.stack.join(', '),
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://buteforce.com' },
+        { '@type': 'ListItem', position: 2, name: 'Work', item: 'https://buteforce.com/work' },
+        { '@type': 'ListItem', position: 3, name: study.title, item: `https://buteforce.com/work/${slug}` },
+      ],
+    },
+  ]
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudySchema) }}
-      />
+      {caseStudySchemas.map((schema, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
       <Nav />
 
       <main className="pt-32 pb-0 bg-surface">

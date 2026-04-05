@@ -7,15 +7,70 @@ import { SITE } from '@/lib/data'
 import { FadeContent, StaggerContainer } from '@/components/animations'
 
 export const metadata: Metadata = {
-  title: 'About Buteforce',
+  title: 'About Buteforce — AI Automation & Computer Vision Company',
   description:
-    'We are Buteforce — an AI automation and computer vision company that builds production systems for businesses that are done doing things manually.',
+    'Buteforce builds production-grade AI automation systems and computer vision pipelines. We ship working systems for businesses that are done doing things manually.',
   alternates: { canonical: 'https://buteforce.com/about' },
+  openGraph: {
+    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+  },
 }
+
+const aboutSchemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    '@id': 'https://buteforce.com/about/#webpage',
+    name: 'About Buteforce',
+    url: 'https://buteforce.com/about',
+    isPartOf: { '@id': 'https://buteforce.com/#website' },
+    about: { '@id': 'https://buteforce.com/#org' },
+    breadcrumb: {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://buteforce.com' },
+        { '@type': 'ListItem', position: 2, name: 'About', item: 'https://buteforce.com/about' },
+      ],
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': 'https://buteforce.com/#org',
+    name: 'Buteforce',
+    url: 'https://buteforce.com',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://buteforce.com/buteforce-wordmark.svg',
+    },
+    email: 'admin@buteforce.com',
+    description: 'AI automation and computer vision company building production-grade systems for businesses.',
+    foundingDate: '2023',
+    areaServed: 'Worldwide',
+    knowsAbout: ['AI Automation', 'Computer Vision', 'Machine Learning', 'n8n', 'Document AI', 'OCR', 'AI Agents'],
+    sameAs: [
+      'https://linkedin.com/company/buteforce',
+      'https://github.com/buteforce',
+    ],
+    employee: {
+      '@type': 'Person',
+      name: 'Buteforce Team',
+      jobTitle: 'AI Engineers',
+      worksFor: { '@id': 'https://buteforce.com/#org' },
+    },
+  },
+]
 
 export default function AboutPage() {
   return (
     <>
+      {aboutSchemas.map((schema, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
       <Nav />
 
       <main className="pt-32 pb-0 bg-surface">
