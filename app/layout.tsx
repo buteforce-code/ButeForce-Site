@@ -98,6 +98,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://buteforce.com',
   },
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/buteforce-mark.png', type: 'image/png', sizes: '512x512' },
+    ],
+    apple: [
+      { url: '/buteforce-mark.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: '/buteforce-mark.png',
+  },
 }
 
 export const viewport: Viewport = {
