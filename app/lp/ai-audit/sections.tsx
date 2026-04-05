@@ -2,6 +2,8 @@
 
 import { useState, useRef } from 'react'
 import { BlurText, FadeContent, StaggerContainer, MagneticButton, TiltCard, ScrollProgressBar } from '@/components/animations'
+import Image from 'next/image'
+import { TrendingDown, Users, Database, Banknote, ListChecks, Wrench, Clock, ShieldCheck } from 'lucide-react'
 
 const CALENDLY_URL = 'https://calendly.com/buteforce/30min'
 
@@ -13,9 +15,23 @@ export function LpHero() {
     <section className="relative min-h-[90vh] flex flex-col justify-center pt-32 pb-24 bg-surface overflow-hidden">
       <ScrollProgressBar />
 
+      {/* Abstract Background Image */}
+      <div 
+        className="absolute inset-0 z-0 pointer-events-none mix-blend-screen opacity-15 md:opacity-[0.25]"
+        style={{ maskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)' }}
+      >
+        <Image 
+          src="/media/ai_audit_hero.png" 
+          alt="Premium AI Abstract Visual" 
+          fill 
+          className="object-cover object-[80%_center]" 
+          priority 
+        />
+      </div>
+
       {/* Subtle yellow radial glow */}
       <div
-        className="absolute top-0 right-0 w-[700px] h-[700px] pointer-events-none opacity-20"
+        className="absolute top-0 right-0 w-[700px] h-[700px] pointer-events-none opacity-20 z-0"
         style={{ background: 'radial-gradient(ellipse at 80% 10%, rgba(255,252,1,0.4) 0%, transparent 60%)' }}
         aria-hidden
       />
@@ -97,27 +113,10 @@ export function LpHero() {
 // THE COST OF DOING NOTHING
 // ─────────────────────────────────────────────────────────────
 const COSTS = [
-  {
-    num: '01',
-    headline: "Your competitors who've moved have a compounding advantage",
-    body: "They're closing deals faster, operating with leaner teams, and reinvesting the savings. Every month without AI in your ops is a month of that gap widening.",
-    stat: '6–12 months',
-    statLabel: 'Average time lost before founders act',
-  },
-  {
-    num: '02',
-    headline: 'Every manual process compounds in cost as you scale',
-    body: "What takes your team 4 hours today takes 8 hours when you double in size. Hiring to handle manual work doesn't scale — it just gets more expensive.",
-    stat: '3–5 hrs/week',
-    statLabel: 'Per employee lost to automatable tasks',
-  },
-  {
-    num: '03',
-    headline: 'The longer you wait, the harder implementation gets',
-    body: "AI systems trained on your own data outperform generic ones. The earlier you start, the better your system gets — and the harder it becomes for late movers to catch up.",
-    stat: '80%+',
-    statLabel: 'Time saved once systems are running',
-  },
+  { num: '01', headline: "Your competitors who've moved have a compounding advantage", body: "They're closing deals faster, operating with leaner teams, reinvesting the savings. Every month you wait is a month of that gap widening — and it compounds. A 3-month head start today becomes a 12-month lead by next year.", icon: TrendingDown },
+  { num: '02', headline: "Every manual process compounds in cost as you scale", body: "What takes your team 4 hours today takes 8 hours when you double in size. Hiring to handle manual work doesn't scale — it just gets more expensive. The ceiling is closer than it looks.", icon: Users },
+  { num: '03', headline: "The longer you wait, the harder implementation becomes", body: "AI systems trained on your data outperform generic ones. The earlier you start, the more data the system accumulates, the better it performs — and the harder it becomes for late movers to close that gap.", icon: Database },
+  { num: '04', headline: "You're already paying — just not getting the output", body: "Every hour a talented team member spends on a task a system could handle is a salary line for work that shouldn't require a human. It's not a future cost. It's a present one, billed every pay cycle.", icon: Banknote },
 ]
 
 export function LpCostSection() {
@@ -128,26 +127,36 @@ export function LpCostSection() {
         <FadeContent className="mb-16 md:mb-20">
           <p className="section-label mb-4">/ The cost of doing nothing</p>
           <BlurText
-            text="We'll get to AI eventually is an expensive sentence."
+            text="&quot;We'll get to AI eventually&quot; is an expensive sentence."
             as="h2"
             className="text-display-md font-display font-bold text-ink heading-relaxed max-w-[22ch]"
             delay={70}
           />
         </FadeContent>
 
-        <StaggerContainer className="grid grid-cols-1 lg:grid-cols-3 gap-px bg-surface-border rounded-2xl overflow-hidden" staggerDelay={0.12}>
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-px bg-surface-border rounded-2xl overflow-hidden mb-px" staggerDelay={0.12}>
           {COSTS.map((c) => (
-            <TiltCard key={c.num} className="bg-surface-warm p-8 lg:p-10 flex flex-col gap-6 group hover:bg-surface transition-colors duration-300 w-full h-full" maxTilt={4}>
-              <span className="font-mono text-[10px] tracking-widest uppercase text-ink-faint">{c.num}</span>
+            <TiltCard key={c.num} className="bg-surface-warm p-8 lg:p-10 flex flex-col gap-6 group hover:bg-surface transition-colors duration-300 w-full h-full border-l-2 border-transparent hover:border-yellow-dim" maxTilt={3}>
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-[10px] tracking-widest uppercase text-ink-faint">{c.num}</span>
+                <c.icon className="w-5 h-5 text-yellow-dim opacity-70 group-hover:opacity-100 transition-opacity" />
+              </div>
               <h3 className="font-display font-bold text-lg text-ink leading-snug">{c.headline}</h3>
               <p className="font-body text-sm text-ink-muted leading-relaxed flex-1">{c.body}</p>
-              <div className="pt-6 border-t border-surface-border">
-                <p className="font-display font-bold text-3xl text-ink mb-1">{c.stat}</p>
-                <p className="font-mono text-[10px] tracking-widest uppercase text-ink-faint">{c.statLabel}</p>
-              </div>
             </TiltCard>
           ))}
         </StaggerContainer>
+
+        <FadeContent delay={0.4}>
+          <div className="bg-surface p-8 lg:p-10 border border-surface-border rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mt-2">
+            <p className="font-display font-bold text-lg md:text-xl text-ink leading-relaxed max-w-3xl">
+              If your team spends 2 hours per day on automatable work, that's <span className="text-yellow-dim">500 hours per person, per year</span> — billed at salary, producing output a system could generate overnight.
+            </p>
+            <p className="font-mono text-[10px] tracking-widest uppercase text-ink-faint text-left md:text-right flex-shrink-0">
+              At any salary.<br/>The math is uncomfortable.
+            </p>
+          </div>
+        </FadeContent>
       </div>
     </section>
   )
@@ -161,21 +170,25 @@ const AUDIT_ITEMS = [
     label: '01',
     title: 'Exact processes to automate first',
     body: "Not 'explore AI possibilities' — specific workflows in your company that can be automated right now, ranked by impact and ease.",
+    icon: ListChecks,
   },
   {
     label: '02',
     title: 'The right tools for your stack',
     body: "Not just 'use ChatGPT.' We'll name the exact models, platforms, and integrations that fit your existing systems.",
+    icon: Wrench,
   },
   {
     label: '03',
     title: 'Real time and cost estimates',
     body: "A specific range — not 'it depends.' We build fast and price fairly. You'll know exactly what to expect before any commitment.",
+    icon: Clock,
   },
   {
     label: '04',
     title: 'An honest fit assessment',
     body: "If we're not the right team for your project, we'll tell you directly. We'd rather lose a call than take a project we can't deliver well.",
+    icon: ShieldCheck,
   },
 ]
 
@@ -216,7 +229,10 @@ export function LpAuditGives() {
                 key={item.label}
                 className={`py-8 flex gap-6 group ${i !== AUDIT_ITEMS.length - 1 ? 'border-b border-surface-border' : ''}`}
               >
-                <span className="font-mono text-[10px] tracking-widest uppercase text-yellow-dim mt-0.5 flex-shrink-0 w-5">{item.label}</span>
+                <div className="flex flex-col items-center gap-3 w-6 mt-0.5 flex-shrink-0">
+                  <span className="font-mono text-[10px] tracking-widest uppercase text-yellow-dim">{item.label}</span>
+                  <item.icon className="w-4 h-4 text-ink-faint group-hover:text-yellow-dim transition-colors duration-200" />
+                </div>
                 <div>
                   <h3 className="font-display font-bold text-ink mb-2 leading-snug group-hover:text-yellow-dim transition-colors duration-200">{item.title}</h3>
                   <p className="font-body text-sm text-ink-muted leading-relaxed">{item.body}</p>

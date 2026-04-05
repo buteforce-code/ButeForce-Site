@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Syne, Outfit, DM_Mono } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 
 const themeScript = `
@@ -146,6 +147,22 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=G-T3LTVKY35T`}
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-T3LTVKY35T');
+            `,
+          }}
         />
       </head>
       <body suppressHydrationWarning className="bg-surface text-ink font-body antialiased">
