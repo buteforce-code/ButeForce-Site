@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Nav from '@/components/nav'
 import Hero from '@/components/hero'
-import LogoProofSection from '@/components/logo-proof-section'
+
 import ServicesSection from '@/components/services-section'
 import CaseStudiesSection from '@/components/case-studies-section'
 import ProcessSection from '@/components/process-section'
@@ -76,8 +76,7 @@ export default function HomePage() {
         {/* 1. Hero — who we are, what we do, proof numbers */}
         <Hero />
 
-        {/* 1.5 Logos — instant visual proof */}
-        <LogoProofSection />
+
 
         {/* 2. Services — what we build, kept simple */}
         <ServicesSection />
