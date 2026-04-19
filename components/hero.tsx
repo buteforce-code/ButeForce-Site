@@ -81,14 +81,14 @@ export default function Hero() {
           <div className="p-6 md:p-8 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 relative overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-all hover:bg-white/10">
             <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-30 pointer-events-none" />
             
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 relative z-10 w-full">
+            <div className="flex flex-col md:flex-row flex-wrap justify-between gap-8 relative z-10 w-full">
               {[
                 { v: '10+',  l: 'Production systems shipped' },
                 { v: '99.2%', l: 'Vision accuracy' },
                 { v: '<1s',  l: 'Document processing' },
                 { v: '80%',  l: 'Average time saved' },
               ].map(({ v, l }) => (
-                <div key={l} className="flex flex-col">
+                <div key={l} className="flex flex-col flex-1 min-w-[200px]">
                   <div 
                     className="font-display font-bold text-4xl md:text-5xl tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/20 mb-2"
                     style={{ filter: "drop-shadow(0px 4px 12px rgba(255, 255, 255, 0.15))" }}
