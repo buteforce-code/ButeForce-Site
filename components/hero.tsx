@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import Link from 'next/link'
-import { BlurText, FadeContent, StaggerContainer } from '@/components/animations'
+import { BlurText, FadeContent } from '@/components/animations'
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -78,29 +78,30 @@ export default function Hero() {
 
         {/* Proof strip */}
         <FadeContent delay={0.8} yOffset={30}>
-          <StaggerContainer className="p-6 md:p-8 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 grid grid-cols-2 md:grid-cols-4 gap-8 relative overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-all hover:bg-white/10" staggerDelay={0.1}>
-            
+          <div className="p-6 md:p-8 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 relative overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-all hover:bg-white/10">
             <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-30 pointer-events-none" />
             
-            {[
-              { v: '10+',  l: 'Production systems shipped' },
-              { v: '99.2%', l: 'Vision accuracy' },
-              { v: '<1s',  l: 'Document processing' },
-              { v: '80%',  l: 'Average time saved' },
-            ].map(({ v, l }) => (
-              <div key={l} className="relative z-10">
-                <div 
-                  className="font-display font-bold text-4xl md:text-5xl tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/20 mb-2"
-                  style={{ filter: "drop-shadow(0px 4px 12px rgba(255, 255, 255, 0.15))" }}
-                >
-                  {v}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 relative z-10 w-full">
+              {[
+                { v: '10+',  l: 'Production systems shipped' },
+                { v: '99.2%', l: 'Vision accuracy' },
+                { v: '<1s',  l: 'Document processing' },
+                { v: '80%',  l: 'Average time saved' },
+              ].map(({ v, l }) => (
+                <div key={l} className="flex flex-col">
+                  <div 
+                    className="font-display font-bold text-4xl md:text-5xl tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/20 mb-2"
+                    style={{ filter: "drop-shadow(0px 4px 12px rgba(255, 255, 255, 0.15))" }}
+                  >
+                    {v}
+                  </div>
+                  <div className="font-mono text-[11px] tracking-wider uppercase text-neutral-400">
+                    {l}
+                  </div>
                 </div>
-                <div className="font-mono text-[11px] tracking-wider uppercase text-neutral-400">
-                  {l}
-                </div>
-              </div>
-            ))}
-          </StaggerContainer>
+              ))}
+            </div>
+          </div>
         </FadeContent>
       </div>
     </section>

@@ -1,0 +1,31 @@
+---
+title: Why We Choose YOLOv8 Over APIs for Manufacturing QC
+description: When it comes to manufacturing quality control, off-the-shelf Vision APIs fall short. Here is why we deploy custom YOLOv8 models directly on the edge.
+date: 2026-04-16T14:30:00.000Z
+tags:
+  - Computer Vision
+  - Manufacturing
+  - Edge AI
+---
+
+## The Speed and Latency Problem
+
+When you're running a manufacturing line pushing 120 items a minute, you don't have time to send a 4K image to an OpenAI or Google Cloud API, wait for a network route, wait for inference, and get a JSON payload back. 
+
+In industrial scenarios, milliseconds matter. If the inspection takes too long, the conveyor belt has to slow down, and your throughput drops. That's unacceptable.
+
+## Edge Deployment is the Only Way
+
+At Buteforce, we tackle visual quality control (QC) differently:
+
+1. **We don't use generic models**. We collect hundreds (or thousands) of images of *your* specific product under *your* specific factory lighting. 
+2. **We train custom models**. We fine-tune YOLOv8 (You Only Look Once), which is optimized for ultra-fast object detection.
+3. **We deploy on the edge**. Rather than relying on the cloud, we deploy the model on local hardware (like NVIDIA Jetson devices or local GPU servers). 
+
+## The Results Speak for Themselves
+
+In a recent deployment for an orthopedic product manufacturer, we completely replaced a manual inspection phase. 
+
+By training a custom YOLOv8 model on their defect criteria—scuffs, misalignments, structural flaws—we achieved a **99.2% classification accuracy**. Because the model ran locally, inference times were under 50ms per item.
+
+This isn't theory. This is AI deployed at the edge, doing a job reliably, 24/7.

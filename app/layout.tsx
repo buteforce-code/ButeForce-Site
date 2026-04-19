@@ -121,10 +121,12 @@ const organizationSchema = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'Organization',
+      '@type': ['Organization', 'ProfessionalService'],
       '@id': 'https://buteforce.com/#org',
       name: 'Buteforce',
+      alternateName: 'Buteforce AI',
       url: 'https://buteforce.com',
+      slogan: 'Precision AI Systems',
       logo: {
         '@type': 'ImageObject',
         url: 'https://buteforce.com/buteforce-wordmark.svg',
@@ -133,22 +135,84 @@ const organizationSchema = {
       },
       email: 'admin@buteforce.com',
       description:
-        'AI automation and computer vision company building production-grade systems for businesses.',
+        'Buteforce builds production-grade AI automation systems and computer vision pipelines for businesses. No consulting. No pilot projects. Working systems shipped in 2–8 weeks.',
+      foundingDate: '2023',
+      areaServed: ['US', 'GB', 'AU', 'AE', 'Worldwide'],
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Chennai',
+        addressRegion: 'Tamil Nadu',
+        addressCountry: 'IN',
+      },
+      founder: {
+        '@type': 'Person',
+        '@id': 'https://buteforce.com/#founder',
+        name: 'Dhyaneshwaran',
+        alternateName: 'Dhyankarthik',
+        jobTitle: 'Founder & AI Architect',
+        url: 'https://www.linkedin.com/in/dhyankarthik/',
+        sameAs: [
+          'https://www.linkedin.com/in/dhyankarthik/',
+          'https://www.upwork.com/freelancers/~010243837662b0c0c1',
+        ],
+        worksFor: { '@id': 'https://buteforce.com/#org' },
+        knowsAbout: [
+          'AI Automation', 'Computer Vision', 'Machine Learning',
+          'YOLOv8', 'PyTorch', 'n8n', 'Claude API', 'Google ADK',
+          'Mistral 7B', 'PaddleOCR', 'Document AI', 'AI Agents',
+        ],
+      },
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'AI Systems Services',
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              '@id': 'https://buteforce.com/services#ai-automation',
+              name: 'AI Workflow Automation',
+              description: 'End-to-end automation pipelines using n8n, Python, and Claude API. Eliminates manual operations. Proven: 80% average time saved.',
+            },
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              '@id': 'https://buteforce.com/services#computer-vision',
+              name: 'Computer Vision Systems',
+              description: 'Custom YOLOv8 models for manufacturing QC, sports analytics, and visual inspection. Proven: 99.2% accuracy at 120 items/min.',
+            },
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              '@id': 'https://buteforce.com/services#ai-agents',
+              name: 'AI Agents',
+              description: 'Autonomous multi-agent systems with human-in-the-loop oversight. Built on Claude API and Google ADK. Proven: 70% of tasks handled autonomously.',
+            },
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              '@id': 'https://buteforce.com/services#document-ai',
+              name: 'Document AI & OCR',
+              description: 'Sub-second document extraction pipelines for invoices, contracts, and forms using Mistral 7B and Google Cloud Vision.',
+            },
+          },
+        ],
+      },
       sameAs: [
         'https://linkedin.com/company/buteforce',
         'https://github.com/buteforce',
       ],
       knowsAbout: [
-        'AI Automation',
-        'Computer Vision',
-        'Machine Learning',
-        'n8n Workflow Automation',
-        'Document AI',
-        'OCR',
-        'AI Agents',
+        'AI Automation', 'Computer Vision', 'Machine Learning',
+        'n8n Workflow Automation', 'Document AI', 'OCR', 'AI Agents',
+        'YOLOv8', 'PyTorch', 'Claude API', 'Google ADK', 'Mistral 7B',
       ],
-      areaServed: 'Worldwide',
-      foundingDate: '2023',
     },
     {
       '@type': 'WebSite',

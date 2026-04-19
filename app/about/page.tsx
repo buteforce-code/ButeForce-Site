@@ -59,6 +59,25 @@ const aboutSchemas = [
       worksFor: { '@id': 'https://buteforce.com/#org' },
     },
   },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': 'https://buteforce.com/#founder',
+    name: 'Dhyaneshwaran',
+    alternateName: 'Dhyankarthik',
+    jobTitle: 'Founder & AI Architect',
+    url: 'https://www.linkedin.com/in/dhyankarthik/',
+    sameAs: [
+      'https://www.linkedin.com/in/dhyankarthik/',
+      'https://www.upwork.com/freelancers/~010243837662b0c0c1',
+    ],
+    worksFor: { '@id': 'https://buteforce.com/#org' },
+    knowsAbout: [
+      'AI Automation', 'Computer Vision', 'Machine Learning', 
+      'YOLOv8', 'PyTorch', 'n8n', 'Claude API', 'Google ADK', 
+      'Mistral 7B', 'PaddleOCR', 'Document AI', 'AI Agents',
+    ],
+  },
 ]
 
 export default function AboutPage() {
@@ -192,6 +211,37 @@ export default function AboutPage() {
                     {tech}
                   </span>
                 ))}
+              </div>
+            </FadeContent>
+          </div>
+        </section>
+
+        {/* Questions About Buteforce */}
+        <section className="py-20 bg-surface border-b border-surface-border">
+          <div className="max-w-site mx-auto px-6 lg:px-10">
+            <FadeContent delay={0.1}>
+              <div className="max-w-2xl">
+                <p className="section-label mb-4">Direct Answers</p>
+                <h2 className="text-display-sm font-display font-bold text-ink mb-6">
+                  Questions about Buteforce.
+                </h2>
+              </div>
+            </FadeContent>
+
+            <FadeContent delay={0.2} yOffset={20}>
+              <div className="flex flex-col gap-8 max-w-3xl">
+                <div>
+                  <h3 className="font-display font-bold text-lg text-ink mb-2">Is Buteforce a consulting firm?</h3>
+                  <p className="font-body text-ink-muted leading-relaxed">No. We build and ship production systems — working software, not strategy decks.</p>
+                </div>
+                <div>
+                  <h3 className="font-display font-bold text-lg text-ink mb-2">Where is Buteforce based?</h3>
+                  <p className="font-body text-ink-muted leading-relaxed">Chennai, India, serving clients in the US, UK, UAE, and Australia.</p>
+                </div>
+                <div>
+                  <h3 className="font-display font-bold text-lg text-ink mb-2">What makes Buteforce different from AI agencies?</h3>
+                  <p className="font-body text-ink-muted leading-relaxed">We use custom models (YOLOv8) to achieve specific metrics (99.2% accuracy) and hand over 100% of the code and infrastructure.</p>
+                </div>
               </div>
             </FadeContent>
           </div>

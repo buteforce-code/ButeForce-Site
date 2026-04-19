@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, useInView, useScroll, useTransform, useSpring, type Variants } from 'framer-motion'
-import { useRef, useEffect, useState, type ReactNode } from 'react'
+import { useRef, useEffect, useState, Children, type ReactNode } from 'react'
 
 // ─────────────────────────────────────────────────────────────
 // BLUR TEXT — React Bits style. Words animate in with blur+fade
@@ -142,7 +142,7 @@ export function StaggerContainer({
   }
 
   // Clone children and inject variants
-  const items = Array.isArray(children) ? children : [children]
+  const items = Children.toArray(children)
 
   return (
     <motion.div

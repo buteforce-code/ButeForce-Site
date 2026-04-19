@@ -3,11 +3,27 @@
 
 export const SITE = {
   name: 'Buteforce',
-  tagline: 'AI Automation & Computer Vision',
+  tagline: 'Precision AI Systems',
   email: 'admin@buteforce.com',
   url: 'https://buteforce.com',
   github: 'https://github.com/buteforce',
   linkedin: 'https://linkedin.com/company/buteforce',
+}
+
+// ── FOUNDER & COMPANY ─────────────────────────────────────
+export const FOUNDER = {
+  name: 'Dhyaneshwaran (Dhyankarthik)',
+  role: 'Founder & AI Architect',
+  location: 'Chennai, Tamil Nadu, India',
+  bio: 'I built Buteforce because I saw too many businesses getting sold "AI pilots" that never made it to production. I believe in engineering custom AI agents and computer vision pipelines that solve expensive problems permanently. No hype, no bloated consulting fees—just working systems.',
+  image: '/images/founder.jpg',
+  linkedin: 'https://www.linkedin.com/in/dhyankarthik/',
+  upwork: 'https://www.upwork.com/freelancers/~010243837662b0c0c1',
+}
+
+export const COMPANY = {
+  address: 'Chennai, Tamil Nadu, India',
+  phone: '+91 9092656133',
 }
 
 // ── NAV ───────────────────────────────────────────────────
@@ -91,6 +107,9 @@ export interface CaseStudy {
   id: string;
   year: string;
   category: string;
+  clientName?: string;
+  clientLogo?: string;
+  image?: string;
   title: string;
   description: string;
   stats: { value: string; label: string }[];

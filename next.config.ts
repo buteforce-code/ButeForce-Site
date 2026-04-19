@@ -47,6 +47,14 @@ const nextConfig: NextConfig = {
     ]
   },
 
+  // Rewrites mapping for TinaCMS Admin Dashboard
+  async rewrites() {
+    return [
+      { source: '/admin', destination: '/admin/index.html' },
+      { source: '/admin/:path*', destination: '/admin/index.html' },
+    ]
+  },
+
   // Redirects
   async redirects() {
     return [

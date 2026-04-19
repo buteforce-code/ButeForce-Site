@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Nav from '@/components/nav'
 import Footer from '@/components/footer'
 import { CTASection } from '@/components/sections'
-import { SERVICES, CASE_STUDIES } from '@/lib/data'
+import { SERVICES, CASE_STUDIES, PROCESS_STEPS } from '@/lib/data'
 import Link from 'next/link'
 import Image from 'next/image'
 import { FadeContent, StaggerContainer } from '@/components/animations'
@@ -40,6 +40,26 @@ const serviceSchemas = [
     },
     knowsAbout: s.stack,
   })),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'How Buteforce delivers a custom AI system',
+    description: 'The four-step process Buteforce uses to build and ship production-grade AI systems for businesses.',
+    step: PROCESS_STEPS.map((step, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: step.title,
+      text: step.description,
+      itemListElement: [{ '@type': 'HowToDirection', text: step.detail }],
+    })),
+    totalTime: 'P6W',
+    tool: [
+      { '@type': 'HowToTool', name: 'n8n' },
+      { '@type': 'HowToTool', name: 'YOLOv8' },
+      { '@type': 'HowToTool', name: 'Claude API' },
+      { '@type': 'HowToTool', name: 'Python' },
+    ],
+  },
 ]
 
 export default function ServicesPage() {

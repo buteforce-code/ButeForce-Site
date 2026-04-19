@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Nav from '@/components/nav'
 import Footer from '@/components/footer'
 import ContactForm from './contact-form'
+import { COMPANY, SITE } from '@/lib/data'
 
 export const metadata: Metadata = {
   title: 'Start a Project',
@@ -54,16 +55,28 @@ export default function ContactPage() {
                 </div>
               </div>
 
+
               <div className="mt-12 pt-10 border-t border-surface-border">
                 <p className="font-mono text-[10px] tracking-widest uppercase text-ink-faint mb-2">
-                  Or email directly
+                  Contact Details
                 </p>
-                <a
-                  href="mailto:admin@buteforce.com"
-                  className="font-body text-ink hover:text-yellow-dim transition-colors underline underline-offset-4 decoration-surface-border hover:decoration-yellow"
-                >
-                  admin@buteforce.com
-                </a>
+                <div className="flex flex-col gap-3 mt-4">
+                  <a
+                    href={`mailto:${SITE.email}`}
+                    className="font-body text-ink hover:text-yellow-dim transition-colors underline underline-offset-4 decoration-surface-border hover:decoration-yellow"
+                  >
+                    {SITE.email}
+                  </a>
+                  <a
+                    href={`tel:${COMPANY.phone.replace(/[^0-9+]/g, '')}`}
+                    className="font-body text-ink hover:text-yellow-dim transition-colors"
+                  >
+                    {COMPANY.phone}
+                  </a>
+                  <p className="font-body text-ink-muted">
+                    {COMPANY.address}
+                  </p>
+                </div>
               </div>
             </div>
 

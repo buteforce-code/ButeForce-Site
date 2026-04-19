@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { NAV_LINKS, SITE } from '@/lib/data'
+import { NAV_LINKS, SITE, COMPANY } from '@/lib/data'
 import BrandLogo from '@/components/brand-logo'
 
 export default function Footer() {
@@ -15,7 +15,7 @@ export default function Footer() {
               <BrandLogo theme="light" className="h-7" />
             </Link>
             <p className="font-body text-sm text-white/30 mt-3 leading-relaxed max-w-[200px]">
-              AI automation and computer vision for businesses built to grow.
+              {SITE.tagline}
             </p>
           </div>
 
@@ -70,6 +70,19 @@ export default function Footer() {
                 >
                   {SITE.email}
                 </a>
+              </li>
+              <li>
+                <a
+                  href={`tel:${COMPANY.phone.replace(/[^0-9+]/g, '')}`}
+                  className="font-body text-sm text-white/40 hover:text-white transition-colors"
+                >
+                  {COMPANY.phone}
+                </a>
+              </li>
+              <li>
+                <p className="font-body text-sm text-white/40 mt-2">
+                  {COMPANY.address}
+                </p>
               </li>
             </ul>
           </div>

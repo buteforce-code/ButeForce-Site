@@ -121,4 +121,3 @@ Disallow: /
 
 # ── Sitemap ──────────────────────────────────────────────────
 Sitemap: https://buteforce.com/sitemap.xml
-Sitemap: https://buteforce.com/server-sitemap.xml

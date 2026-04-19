@@ -38,7 +38,7 @@ export default async function CaseStudyPage({ params }: Props) {
   const caseStudySchemas = [
     {
       '@context': 'https://schema.org',
-      '@type': 'Article',
+      '@type': 'TechArticle',
       '@id': `https://buteforce.com/work/${slug}/#article`,
       headline: study.title,
       description: study.description,
@@ -48,11 +48,15 @@ export default async function CaseStudyPage({ params }: Props) {
       mainEntityOfPage: `https://buteforce.com/work/${slug}`,
       isPartOf: { '@id': 'https://buteforce.com/#website' },
       about: {
-        '@type': 'Thing',
-        name: study.category,
+        '@type': 'SoftwareApplication',
+        name: study.title,
+        applicationCategory: study.category,
         description: study.description,
+        creator: { '@id': 'https://buteforce.com/#org' },
+        result: study.stats.map(s => `${s.value} ${s.label}`).join(', '),
       },
       keywords: study.stack.join(', '),
+      proficiencyLevel: 'Expert',
     },
     {
       '@context': 'https://schema.org',
