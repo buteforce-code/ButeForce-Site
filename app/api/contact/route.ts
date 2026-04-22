@@ -62,7 +62,7 @@ export async function POST(req: NextRequest) {
       const resend = new Resend(process.env.RESEND_API_KEY)
       await resend.emails.send({
         from: 'Buteforce Website <noreply@buteforce.com>',
-        to: ['admin@buteforce.com'],
+        to: ['admin@buteforce.com', 'dhyan.vrit@gmail.com'],
         replyTo: clean.email,
         subject: `New project enquiry — ${clean.company || clean.name}`,
         html: `
