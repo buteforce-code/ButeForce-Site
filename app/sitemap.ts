@@ -12,11 +12,10 @@ function getBlogSlugs(): { slug: string; date: string }[] {
     .map(f => {
       const content = fs.readFileSync(path.join(dir, f), 'utf-8')
       const { data } = matter(content)
-      return {
-        slug: data.slug || f.replace(/\.mdx?$/, ''),
-        date: data.date || new Date().toISOString(),
-      }
+      return { data, slug: data.slug || f.replace(/\.mdx?$/, ''), date: data.date }
     })
+    .filter(({ data }) => !data.draft && data.date)
+    .map(({ slug, date }) => ({ slug, date: new Date(date).toISOString() }))
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {

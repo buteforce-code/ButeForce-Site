@@ -29,7 +29,9 @@ export const metadata: Metadata = {
     description: '30 minutes. We map exactly which parts of your business AI can automate right now. No slide decks. Specific tools, real timelines.',
     url: 'https://buteforce.com/lp/ai-audit',
     siteName: 'Buteforce',
-  }
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Buteforce Free AI Audit' }],
+  },
+  twitter: { card: 'summary_large_image' },
 }
 
 const landingPageSchema = {

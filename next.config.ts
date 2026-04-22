@@ -62,13 +62,6 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: '/home', destination: '/', permanent: true },
-      // Normalise trailing slashes for pages Google found with redirect errors
-      { source: '/contact/', destination: '/contact', permanent: true },
-      { source: '/about/',   destination: '/about',   permanent: true },
-      { source: '/work/',    destination: '/work',    permanent: true },
-      { source: '/lp/ai-audit/', destination: '/lp/ai-audit', permanent: true },
-      { source: '/blog/',    destination: '/blog',    permanent: true },
-      { source: '/services/', destination: '/services', permanent: true },
     ]
   },
 }

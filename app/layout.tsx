@@ -48,16 +48,6 @@ export const metadata: Metadata = {
   },
   description:
     'We build AI automation systems, computer vision pipelines, and intelligent agents for businesses that are done doing things manually. Real systems. Real results.',
-  keywords: [
-    'AI automation',
-    'computer vision',
-    'AI agents',
-    'n8n automation',
-    'document AI',
-    'OCR automation',
-    'business automation',
-    'machine learning solutions',
-  ],
   authors: [{ name: 'Buteforce', url: 'https://buteforce.com' }],
   creator: 'Buteforce',
   publisher: 'Buteforce',
@@ -94,9 +84,6 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
-  },
-  alternates: {
-    canonical: 'https://buteforce.com',
   },
   icons: {
     icon: [

@@ -44,13 +44,18 @@ export default function Footer() {
               Services
             </p>
             <ul className="flex flex-col gap-3">
-              {['AI Automation', 'Computer Vision', 'AI Agents', 'Document AI'].map(s => (
-                <li key={s}>
+              {[
+                { label: 'AI Automation',   href: '/services#ai-automation' },
+                { label: 'Computer Vision', href: '/services#computer-vision' },
+                { label: 'AI Agents',       href: '/services#ai-agents' },
+                { label: 'Document AI',     href: '/services#document-ai' },
+              ].map(s => (
+                <li key={s.label}>
                   <Link
-                    href="/services"
+                    href={s.href}
                     className="font-body text-sm text-white/40 hover:text-white transition-colors"
                   >
-                    {s}
+                    {s.label}
                   </Link>
                 </li>
               ))}
