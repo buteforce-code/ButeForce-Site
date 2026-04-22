@@ -8,9 +8,9 @@ import path from 'path'
 import matter from 'gray-matter'
 
 export const metadata: Metadata = {
-  title: 'Blog — AI Automation Insights',
+  title: 'Blog — AI Automation Guides, Computer Vision & Case Studies',
   description:
-    'Practical articles on AI automation, computer vision, and building intelligent systems for business operations.',
+    'Practical guides on AI automation, computer vision, and building production AI systems. Real techniques from 10+ shipped systems.',
   alternates: { canonical: 'https://buteforce.com/blog' },
 }
 
@@ -45,8 +45,36 @@ function getPosts(): PostMeta[] {
 export default function BlogPage() {
   const posts = getPosts()
 
+  const blogSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: 'Buteforce Blog — AI Automation & Computer Vision',
+    description: 'Practical guides on AI automation, computer vision, and production AI systems.',
+    url: 'https://buteforce.com/blog',
+    publisher: {
+      '@type': 'Organization',
+      name: 'Buteforce',
+      url: 'https://buteforce.com',
+      logo: { '@type': 'ImageObject', url: 'https://buteforce.com/buteforce-wordmark.svg' },
+    },
+    ...(posts.length > 0 && {
+      blogPost: posts.map(post => ({
+        '@type': 'BlogPosting',
+        headline: post.title,
+        description: post.description,
+        datePublished: post.date,
+        url: `https://buteforce.com/blog/${post.slug}`,
+        author: { '@type': 'Organization', name: 'Buteforce' },
+      })),
+    }),
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
+      />
       <Nav />
 
       <main className="pt-32 pb-0 bg-surface min-h-screen">

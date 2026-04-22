@@ -10,19 +10,52 @@ const BUDGETS = [
   'Not sure yet',
 ]
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+interface FormFields {
+  name: string
+  company: string
+  email: string
+  problem: string
+  budget: string
+}
+
+type FieldErrors = Partial<Record<keyof FormFields, string>>
+
+function validate(form: FormFields): FieldErrors {
+  const errors: FieldErrors = {}
+  if (!form.name.trim()) errors.name = 'Name is required'
+  if (!form.email.trim()) {
+    errors.email = 'Email is required'
+  } else if (!EMAIL_RE.test(form.email.trim())) {
+    errors.email = 'Enter a valid email address'
+  }
+  if (!form.problem.trim()) errors.problem = 'Please describe what you want to automate'
+  return errors
+}
+
 export default function ContactForm() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<FormFields>({
     name: '', company: '', email: '', problem: '', budget: '',
   })
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({})
 
-  const set = (k: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
-    setForm(f => ({ ...f, [k]: e.target.value }))
+  const set = (k: keyof FormFields) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+      setForm(f => ({ ...f, [k]: e.target.value }))
+      if (fieldErrors[k]) setFieldErrors(fe => ({ ...fe, [k]: undefined }))
+    }
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setStatus('loading')
+    const errors = validate(form)
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors)
+      return
+    }
 
+    setStatus('loading')
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
@@ -36,11 +69,13 @@ export default function ContactForm() {
   }
 
   const inputClass = `
-    w-full font-body text-base text-ink bg-surface-warm border border-surface-border rounded-btn
+    w-full font-body text-base text-ink bg-surface-warm border rounded-btn
     px-4 py-3 outline-none transition-all duration-150
     placeholder:text-ink-faint/50
-    focus:border-ink/30 focus:bg-surface focus:ring-2 focus:ring-yellow/20
+    focus:bg-surface focus:ring-2 focus:ring-yellow/20
   `
+  const inputOk = `border-surface-border focus:border-ink/30`
+  const inputErr = `border-red-400 focus:border-red-400 focus:ring-red-100/30`
 
   if (status === 'success') {
     return (
@@ -50,9 +85,7 @@ export default function ContactForm() {
             <path d="M4 10l4.5 4.5L16 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </div>
-        <h3 className="font-display font-bold text-2xl text-ink mb-3">
-          We got it.
-        </h3>
+        <h3 className="font-display font-bold text-2xl text-ink mb-3">We got it.</h3>
         <p className="font-body text-ink-muted leading-relaxed max-w-sm">
           We'll come back to you within 24 hours with a direct answer — not a brochure.
         </p>
@@ -61,7 +94,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={submit} className="flex flex-col gap-5">
+    <form onSubmit={submit} noValidate className="flex flex-col gap-5">
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
@@ -70,12 +103,14 @@ export default function ContactForm() {
           </label>
           <input
             type="text"
-            required
             placeholder="Your name"
-            className={inputClass}
+            className={`${inputClass} ${fieldErrors.name ? inputErr : inputOk}`}
             value={form.name}
             onChange={set('name')}
           />
+          {fieldErrors.name && (
+            <p className="font-mono text-[10px] text-red-500 mt-1.5">{fieldErrors.name}</p>
+          )}
         </div>
         <div>
           <label className="font-mono text-[10px] tracking-widest uppercase text-ink-faint block mb-1.5">
@@ -83,9 +118,8 @@ export default function ContactForm() {
           </label>
           <input
             type="text"
-            required
             placeholder="Company name"
-            className={inputClass}
+            className={`${inputClass} ${inputOk}`}
             value={form.company}
             onChange={set('company')}
           />
@@ -98,12 +132,14 @@ export default function ContactForm() {
         </label>
         <input
           type="email"
-          required
           placeholder="you@company.com"
-          className={inputClass}
+          className={`${inputClass} ${fieldErrors.email ? inputErr : inputOk}`}
           value={form.email}
           onChange={set('email')}
         />
+        {fieldErrors.email && (
+          <p className="font-mono text-[10px] text-red-500 mt-1.5">{fieldErrors.email}</p>
+        )}
       </div>
 
       <div>
@@ -111,13 +147,15 @@ export default function ContactForm() {
           What do you want to automate?
         </label>
         <textarea
-          required
           rows={5}
           placeholder="Describe the process that's costing you the most time or money right now. Be specific — it helps us give you a useful answer."
-          className={`${inputClass} resize-none`}
+          className={`${inputClass} ${fieldErrors.problem ? inputErr : inputOk} resize-none`}
           value={form.problem}
           onChange={set('problem')}
         />
+        {fieldErrors.problem && (
+          <p className="font-mono text-[10px] text-red-500 mt-1.5">{fieldErrors.problem}</p>
+        )}
       </div>
 
       <div>
@@ -125,7 +163,7 @@ export default function ContactForm() {
           Budget range
         </label>
         <select
-          className={inputClass}
+          className={`${inputClass} ${inputOk}`}
           value={form.budget}
           onChange={set('budget')}
         >

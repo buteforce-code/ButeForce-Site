@@ -4,16 +4,41 @@ import Footer from '@/components/footer'
 import ContactForm from './contact-form'
 import { COMPANY, SITE } from '@/lib/data'
 
+const contactSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Start an AI Project — Buteforce',
+  url: 'https://buteforce.com/contact',
+  description: 'Get a custom AI automation quote from Buteforce. We respond within 24 hours with specific tools, timelines, and pricing.',
+  mainEntity: {
+    '@type': 'Organization',
+    name: 'Buteforce',
+    url: 'https://buteforce.com',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'Customer Service',
+      telephone: '+91-9092656133',
+      email: 'admin@buteforce.com',
+      areaServed: 'Worldwide',
+      availableLanguage: 'English',
+    },
+  },
+}
+
 export const metadata: Metadata = {
-  title: 'Start a Project',
+  title: 'Start an AI Project — Get a Custom Quote in 24 Hours',
   description:
-    'Tell us what you want to automate. We respond within 24 hours.',
+    'Get a custom AI automation quote. No sales call, no 20-question form — tell us what process is costing you time or money and we respond within 24 hours.',
   alternates: { canonical: 'https://buteforce.com/contact' },
 }
 
 export default function ContactPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }}
+      />
       <Nav />
       <main className="pt-32 pb-24 min-h-screen bg-surface">
         <div className="max-w-site mx-auto px-6 lg:px-10">

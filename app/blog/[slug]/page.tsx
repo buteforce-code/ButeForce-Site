@@ -13,6 +13,22 @@ interface Props {
   params: Promise<{ slug: string }>
 }
 
+function getAllSlugs(): string[] {
+  const dir = path.join(process.cwd(), 'content/blog')
+  if (!fs.existsSync(dir)) return []
+  return fs.readdirSync(dir)
+    .filter(f => f.endsWith('.mdx') || f.endsWith('.md'))
+    .map(f => {
+      const content = fs.readFileSync(path.join(dir, f), 'utf-8')
+      const { data } = matter(content)
+      return data.slug || f.replace(/\.mdx?$/, '')
+    })
+}
+
+export async function generateStaticParams() {
+  return getAllSlugs().map(slug => ({ slug }))
+}
+
 function getPost(slug: string) {
   const dir = path.join(process.cwd(), 'content/blog')
   const files = fs.existsSync(dir) ? fs.readdirSync(dir) : []
@@ -33,7 +49,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return {}
 
   return {
-    title: post.meta.title,
+    title: `${post.meta.title} | Buteforce`,
     description: post.meta.description,
     alternates: { canonical: `https://buteforce.com/blog/${slug}` },
     openGraph: {

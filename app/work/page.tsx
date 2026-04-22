@@ -3,6 +3,26 @@ import Nav from '@/components/nav'
 import Footer from '@/components/footer'
 import WorkGrid from './work-grid'
 import { FadeContent } from '@/components/animations'
+import { CASE_STUDIES } from '@/lib/data'
+
+const workSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Our Work — 10 Production AI Systems',
+  description: 'Computer vision, AI agents, automation workflows, and document AI — 10 real systems built and shipped.',
+  url: 'https://buteforce.com/work',
+  mainEntity: {
+    '@type': 'ItemList',
+    numberOfItems: CASE_STUDIES.length,
+    itemListElement: CASE_STUDIES.map((study, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: study.title,
+      description: study.description,
+      url: `https://buteforce.com/work/${study.slug}`,
+    })),
+  },
+}
 
 export const metadata: Metadata = {
   title: 'Our Work — 10 Production AI Systems',
@@ -14,6 +34,10 @@ export const metadata: Metadata = {
 export default function WorkPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(workSchema) }}
+      />
       <Nav />
       <main className="pt-32 pb-24 bg-surface min-h-screen">
         <div className="max-w-site mx-auto px-6 lg:px-10">
