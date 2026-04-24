@@ -59,16 +59,11 @@ const nextConfig: NextConfig = {
   },
 
   // Redirects
+  // NOTE: Vercel handles HTTP→HTTPS at the CDN edge automatically.
+  // Do NOT add x-forwarded-proto redirects here — they cause infinite loops.
   async redirects() {
     return [
-      // HTTP → HTTPS (belt-and-suspenders; Vercel also enforces this)
-      {
-        source: '/:path*',
-        has: [{ type: 'header', key: 'x-forwarded-proto', value: 'http' }],
-        destination: 'https://buteforce.com/:path*',
-        permanent: true,
-      },
-      // www → non-www canonical
+      // www → non-www canonical (Vercel doesn't auto-handle this)
       {
         source: '/:path*',
         has: [{ type: 'host', value: 'www.buteforce.com' }],
