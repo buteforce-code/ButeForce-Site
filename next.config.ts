@@ -61,6 +61,21 @@ const nextConfig: NextConfig = {
   // Redirects
   async redirects() {
     return [
+      // HTTP → HTTPS (belt-and-suspenders; Vercel also enforces this)
+      {
+        source: '/:path*',
+        has: [{ type: 'header', key: 'x-forwarded-proto', value: 'http' }],
+        destination: 'https://buteforce.com/:path*',
+        permanent: true,
+      },
+      // www → non-www canonical
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.buteforce.com' }],
+        destination: 'https://buteforce.com/:path*',
+        permanent: true,
+      },
+      // Legacy cleanup
       { source: '/home', destination: '/', permanent: true },
     ]
   },

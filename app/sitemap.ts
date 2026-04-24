@@ -20,30 +20,32 @@ function getBlogSlugs(): { slug: string; date: string }[] {
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = 'https://buteforce.com'
-  const now = new Date()
 
-  const staticPages = [
-    { url: base,               priority: 1.0,  changeFrequency: 'weekly'  as const },
-    { url: `${base}/services`, priority: 0.9,  changeFrequency: 'monthly' as const },
-    { url: `${base}/work`,     priority: 0.9,  changeFrequency: 'weekly'  as const },
-    { url: `${base}/blog`,     priority: 0.8,  changeFrequency: 'daily'   as const },
-    { url: `${base}/faq`,      priority: 0.8,  changeFrequency: 'monthly' as const },
-    { url: `${base}/about`,    priority: 0.7,  changeFrequency: 'monthly' as const },
-    { url: `${base}/contact`,  priority: 0.8,  changeFrequency: 'monthly' as const },
-    { url: `${base}/lp/ai-audit`, priority: 0.6, changeFrequency: 'monthly' as const },
-  ].map(p => ({ ...p, lastModified: now }))
+  // Fixed dates — update these when content actually changes.
+  // DO NOT use `new Date()` for static pages; it tricks Googlebot into
+  // re-crawling everything on every deploy, wasting crawl budget.
+  const staticPages: MetadataRoute.Sitemap = [
+    { url: base,                  priority: 1.0, changeFrequency: 'weekly',  lastModified: new Date('2026-04-18') },
+    { url: `${base}/services`,    priority: 0.9, changeFrequency: 'monthly', lastModified: new Date('2026-04-15') },
+    { url: `${base}/work`,        priority: 0.9, changeFrequency: 'weekly',  lastModified: new Date('2026-04-18') },
+    { url: `${base}/blog`,        priority: 0.8, changeFrequency: 'daily',   lastModified: new Date('2026-04-18') },
+    { url: `${base}/faq`,         priority: 0.8, changeFrequency: 'monthly', lastModified: new Date('2026-04-15') },
+    { url: `${base}/about`,       priority: 0.7, changeFrequency: 'monthly', lastModified: new Date('2026-04-01') },
+    { url: `${base}/contact`,     priority: 0.8, changeFrequency: 'monthly', lastModified: new Date('2026-04-01') },
+    { url: `${base}/lp/ai-audit`, priority: 0.6, changeFrequency: 'monthly', lastModified: new Date('2026-04-15') },
+  ]
 
-  const caseStudyPages = CASE_STUDIES.map(study => ({
+  const caseStudyPages: MetadataRoute.Sitemap = CASE_STUDIES.map(study => ({
     url: `${base}/work/${study.slug}`,
-    lastModified: now,
-    changeFrequency: 'monthly' as const,
+    lastModified: new Date('2026-04-15'),
+    changeFrequency: 'monthly',
     priority: 0.8,
   }))
 
-  const blogPages = getBlogSlugs().map(({ slug, date }) => ({
+  const blogPages: MetadataRoute.Sitemap = getBlogSlugs().map(({ slug, date }) => ({
     url: `${base}/blog/${slug}`,
     lastModified: new Date(date),
-    changeFrequency: 'monthly' as const,
+    changeFrequency: 'monthly',
     priority: 0.7,
   }))
 
