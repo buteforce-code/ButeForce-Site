@@ -1,19 +1,19 @@
 import type { Metadata, Viewport } from 'next'
 import { Syne, Outfit, DM_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 import './globals.css'
 
+// Brand rule: light theme always (brand_bible 2026-04-12). Force light and clear any
+// previously stored/system dark preference so dark-OS visitors never get a dark site.
 const themeScript = `
   (() => {
     try {
-      const storageKey = 'buteforce-theme'
-      const storedTheme = window.localStorage.getItem(storageKey)
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-      const theme = storedTheme === 'dark' || storedTheme === 'light' ? storedTheme : systemTheme
+      window.localStorage.removeItem('buteforce-theme')
       const root = document.documentElement
-      root.classList.toggle('dark', theme === 'dark')
-      root.style.colorScheme = theme
+      root.classList.remove('dark')
+      root.style.colorScheme = 'light'
     } catch {}
   })()
 `
@@ -272,6 +272,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         {/* End Google Tag Manager (noscript) */}
         {children}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
