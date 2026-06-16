@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Syne, Outfit, DM_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 import './globals.css'
 
@@ -272,6 +273,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         {/* End Google Tag Manager (noscript) */}
         {children}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
