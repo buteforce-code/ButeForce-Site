@@ -69,10 +69,11 @@ export default async function BlogPostPage({ params }: Props) {
 
   const articleSchema = {
     '@context': 'https://schema.org',
-    '@type': 'Article',
+    '@type': 'BlogPosting',
     headline: post.meta.title,
     description: post.meta.description,
     datePublished: post.meta.date,
+    dateModified: post.meta.dateModified || post.meta.date,
     author: { '@type': 'Organization', name: 'Buteforce', url: 'https://buteforce.com' },
     publisher: {
       '@type': 'Organization',
@@ -82,8 +83,27 @@ export default async function BlogPostPage({ params }: Props) {
     },
     url: `https://buteforce.com/blog/${slug}`,
     mainEntityOfPage: `https://buteforce.com/blog/${slug}`,
-    keywords: post.meta.tags?.join(', '),
+    keywords: Array.isArray(post.meta.tags) ? post.meta.tags.join(', ') : undefined,
+    inLanguage: 'en-IN',
+    ...(post.meta.image ? { image: post.meta.image } : {}),
   }
+
+  // FAQPage rich result — rendered when the post frontmatter carries `faqs: [{question, answer}]`
+  // (the blog agent's schema step injects these). Inert when absent.
+  const faqs = Array.isArray(post.meta.faqs) ? post.meta.faqs : []
+  const faqSchema = faqs.length
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqs
+          .filter((f: any) => f && f.question && f.answer)
+          .map((f: any) => ({
+            '@type': 'Question',
+            name: f.question,
+            acceptedAnswer: { '@type': 'Answer', text: f.answer },
+          })),
+      }
+    : null
 
   const wordCount = post.body.split(/\s+/).length
   const readTime = Math.max(1, Math.ceil(wordCount / 200))
@@ -94,6 +114,12 @@ export default async function BlogPostPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
+      {faqSchema && faqSchema.mainEntity.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
       <Nav />
 
       <main className="pt-32 pb-0 bg-surface">
