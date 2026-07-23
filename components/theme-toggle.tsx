@@ -8,6 +8,8 @@ type Theme = 'light' | 'dark'
 type ThemeToggleProps = {
   className?: string
   showLabel?: boolean
+  /** Glass treatment for when the toggle sits over the dark hero video. */
+  onDark?: boolean
 }
 
 const STORAGE_KEY = 'buteforce-theme'
@@ -22,6 +24,7 @@ function applyTheme(theme: Theme) {
 export default function ThemeToggle({
   className,
   showLabel = false,
+  onDark = false,
 }: ThemeToggleProps) {
   const [theme, setTheme] = useState<Theme>('light')
   const [mounted, setMounted] = useState(false)
@@ -47,7 +50,10 @@ export default function ThemeToggle({
         applyTheme(updatedTheme)
       }}
       className={clsx(
-        'inline-flex items-center justify-center rounded-full border border-surface-border bg-surface text-ink-muted transition-all duration-150 hover:border-ink/20 hover:text-ink active:scale-[0.98]',
+        'inline-flex items-center justify-center rounded-full border transition-all duration-150 active:scale-[0.98]',
+        onDark
+          ? 'border-white/20 bg-white/10 text-white/80 backdrop-blur-md hover:border-white/40 hover:text-white'
+          : 'border-surface-border bg-surface text-ink-muted hover:border-ink/20 hover:text-ink',
         showLabel ? 'gap-2 px-3 py-2' : 'h-10 w-10',
         className
       )}

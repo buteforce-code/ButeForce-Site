@@ -52,7 +52,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const ogImage = post.meta.image || 'https://buteforce.com/og-share.png'
 
   return {
-    title: `${post.meta.title} | Buteforce`,
+    // Root layout applies the `%s | Buteforce` template — don't repeat the brand here.
+    title: post.meta.title,
     description: post.meta.description,
     alternates: { canonical: `https://buteforce.com/blog/${slug}` },
     openGraph: {

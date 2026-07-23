@@ -5,15 +5,17 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 
 import './globals.css'
 
-// Brand rule: light theme always (brand_bible 2026-04-12). Force light and clear any
-// previously stored/system dark preference so dark-OS visitors never get a dark site.
+// Resolve theme before first paint: explicit user choice wins, otherwise follow the OS.
 const themeScript = `
   (() => {
     try {
-      window.localStorage.removeItem('buteforce-theme')
+      const storageKey = 'buteforce-theme'
+      const storedTheme = window.localStorage.getItem(storageKey)
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+      const theme = storedTheme === 'dark' || storedTheme === 'light' ? storedTheme : systemTheme
       const root = document.documentElement
-      root.classList.remove('dark')
-      root.style.colorScheme = 'light'
+      root.classList.toggle('dark', theme === 'dark')
+      root.style.colorScheme = theme
     } catch {}
   })()
 `
@@ -102,7 +104,10 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#ffffff',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#0c0c0c' },
+  ],
   width: 'device-width',
   initialScale: 1,
 }

@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 import { NAV_LINKS } from '@/lib/data'
 import { motion, AnimatePresence } from 'framer-motion'
 import BrandLogo from '@/components/brand-logo'
+import ThemeToggle from '@/components/theme-toggle'
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
@@ -19,9 +20,9 @@ export default function Nav() {
   }, [])
 
   const isHome = pathname === '/'
-  // Hero is light (brand light-always). The over-hero "light header" treatment (white logo/text)
-  // would be invisible on the light hero, so the nav always uses its dark-on-light styling now.
-  const useLightHeader = false
+  // The home hero is a dark video, so the unscrolled header sits on dark and needs
+  // the white logo/text treatment. Everywhere else the nav is dark-on-light.
+  const useLightHeader = isHome && !scrolled
 
   return (
     <header
@@ -74,6 +75,7 @@ export default function Nav() {
 
         {/* CTA */}
         <div className="hidden md:flex items-center gap-4">
+          <ThemeToggle onDark={useLightHeader} />
           <Link href="/contact" className={`text-xs py-2.5 px-5 transition-colors ${useLightHeader ? 'bg-white text-black hover:bg-white/90 rounded-md font-bold tracking-wide' : 'bg-yellow text-black hover:bg-yellow/90 rounded-md font-bold tracking-wide shadow-sm'}`}>
             Start a project
             <span aria-hidden className="ml-1 opacity-70">→</span>
@@ -117,6 +119,9 @@ export default function Nav() {
               }}
               className="px-6 py-6 flex flex-col gap-5"
             >
+              <motion.div variants={{ hidden: { opacity: 0, y: -10 }, visible: { opacity: 1, y: 0 } }}>
+                <ThemeToggle showLabel className="w-fit" />
+              </motion.div>
               {NAV_LINKS.map(link => (
                 <motion.div key={link.href} variants={{ hidden: { opacity: 0, y: -10 }, visible: { opacity: 1, y: 0 } }}>
                   <Link
