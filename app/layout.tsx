@@ -49,7 +49,10 @@ export const metadata: Metadata = {
   },
   description:
     'We build AI automation systems, computer vision pipelines, and intelligent agents for businesses that are done doing things manually. Real systems. Real results.',
-  authors: [{ name: 'Buteforce', url: 'https://buteforce.com' }],
+  authors: [{ name: 'Dhyaneshwaran', url: 'https://www.linkedin.com/in/dhyankarthik/' }],
+  alternates: {
+    types: { 'application/rss+xml': 'https://buteforce.com/rss.xml' },
+  },
   creator: 'Buteforce',
   publisher: 'Buteforce',
   openGraph: {
@@ -62,10 +65,10 @@ export const metadata: Metadata = {
       'We build AI automation systems, computer vision pipelines, and intelligent agents. Real systems, shipped fast.',
     images: [
       {
-        url: '/og-image.png',
+        url: '/og-share.png',
         width: 1200,
         height: 630,
-        alt: 'Buteforce — AI Automation & Computer Vision',
+        alt: 'ButeForce — Bridging Business and AI',
       },
     ],
   },
@@ -73,7 +76,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Buteforce — AI Automation & Computer Vision',
     description: 'We build AI automation systems, computer vision, and intelligent agents.',
-    images: ['/og-image.png'],
+    images: ['/og-share.png'],
   },
   robots: {
     index: true,

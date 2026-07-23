@@ -8,6 +8,7 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import Link from 'next/link'
+import Image from 'next/image'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -48,6 +49,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPost(slug)
   if (!post) return {}
 
+  const ogImage = post.meta.image || 'https://buteforce.com/og-share.png'
+
   return {
     title: `${post.meta.title} | Buteforce`,
     description: post.meta.description,
@@ -57,7 +60,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: post.meta.title,
       description: post.meta.description,
       publishedTime: post.meta.date,
-      authors: ['Buteforce'],
+      authors: ['Dhyaneshwaran'],
+      images: [{ url: ogImage, width: 1200, height: 630, alt: post.meta.title }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.meta.title,
+      description: post.meta.description,
+      images: [ogImage],
     },
   }
 }
@@ -74,7 +84,14 @@ export default async function BlogPostPage({ params }: Props) {
     description: post.meta.description,
     datePublished: post.meta.date,
     dateModified: post.meta.dateModified || post.meta.date,
-    author: { '@type': 'Organization', name: 'Buteforce', url: 'https://buteforce.com' },
+    author: {
+      '@type': 'Person',
+      '@id': 'https://buteforce.com/#founder',
+      name: 'Dhyaneshwaran',
+      jobTitle: 'Founder & AI Architect',
+      url: 'https://www.linkedin.com/in/dhyankarthik/',
+      worksFor: { '@type': 'Organization', name: 'Buteforce', url: 'https://buteforce.com' },
+    },
     publisher: {
       '@type': 'Organization',
       name: 'Buteforce',
@@ -181,12 +198,30 @@ export default async function BlogPostPage({ params }: Props) {
         <div className="border-t border-surface-border py-10">
           <div className="max-w-prose-wide mx-auto px-6 lg:px-10">
             <div className="flex items-center gap-4">
-              <div className="w-10 h-10 bg-ink rounded-full flex items-center justify-center flex-shrink-0">
-                <span className="font-display font-bold text-xs text-yellow">BF</span>
+              <div className="w-10 h-10 rounded-full border border-surface-border bg-white flex items-center justify-center flex-shrink-0 overflow-hidden">
+                <Image
+                  src="/buteforce-mark.png"
+                  alt="Buteforce logo"
+                  width={28}
+                  height={28}
+                />
               </div>
               <div>
-                <p className="font-display font-bold text-base text-ink">Buteforce Team</p>
-                <p className="font-mono text-xs text-ink-faint tracking-wide">buteforce.com</p>
+                <p className="font-display font-bold text-base text-ink">Dhyaneshwaran</p>
+                <p className="font-mono text-xs text-ink-faint tracking-wide">
+                  Founder & AI Architect, Buteforce ·{' '}
+                  <a
+                    href="https://www.linkedin.com/in/dhyankarthik/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-ink transition-colors"
+                  >
+                    LinkedIn
+                  </a>
+                </p>
+                <p className="font-mono text-[10px] text-ink-faint tracking-wide mt-1">
+                  AI-assisted research · human-reviewed and edited before publishing
+                </p>
               </div>
               <Link href="/contact" className="ml-auto btn-primary text-xs py-2 px-4">
                 Work with us →

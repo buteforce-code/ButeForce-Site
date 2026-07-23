@@ -65,6 +65,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: '/home', destination: '/', permanent: true },
+      // Unpublished 2026-07-23: post contained fabricated claims about a real company.
+      { source: '/blog/why-claude-mythos-is-feared-this-much-and-what-is-the-glassw', destination: '/blog', permanent: true },
+      // Old swarm-generated URLs that never existed as pages (404s linked from posts)
+      { source: '/services/ai-development', destination: '/services', permanent: true },
+      { source: '/services/automation', destination: '/services#ai-automation', permanent: true },
     ]
   },
 }

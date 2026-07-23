@@ -21,14 +21,21 @@ function getBlogSlugs(): { slug: string; date: string }[] {
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = 'https://buteforce.com'
 
+  const blogSlugs = getBlogSlugs()
+
+  // /blog index changes whenever a post is published — derive from newest post.
+  const newestPostDate = blogSlugs.length
+    ? blogSlugs.map(({ date }) => date).sort().reverse()[0]
+    : '2026-04-18'
+
   // Fixed dates — update these when content actually changes.
   // DO NOT use `new Date()` for static pages; it tricks Googlebot into
   // re-crawling everything on every deploy, wasting crawl budget.
   const staticPages: MetadataRoute.Sitemap = [
-    { url: base,                  priority: 1.0, changeFrequency: 'weekly',  lastModified: new Date('2026-04-18') },
+    { url: base,                  priority: 1.0, changeFrequency: 'weekly',  lastModified: new Date('2026-07-23') },
     { url: `${base}/services`,    priority: 0.9, changeFrequency: 'monthly', lastModified: new Date('2026-04-15') },
     { url: `${base}/work`,        priority: 0.9, changeFrequency: 'weekly',  lastModified: new Date('2026-04-18') },
-    { url: `${base}/blog`,        priority: 0.8, changeFrequency: 'daily',   lastModified: new Date('2026-04-18') },
+    { url: `${base}/blog`,        priority: 0.8, changeFrequency: 'daily',   lastModified: new Date(newestPostDate) },
     { url: `${base}/faq`,         priority: 0.8, changeFrequency: 'monthly', lastModified: new Date('2026-04-15') },
     { url: `${base}/about`,       priority: 0.7, changeFrequency: 'monthly', lastModified: new Date('2026-04-01') },
     { url: `${base}/contact`,     priority: 0.8, changeFrequency: 'monthly', lastModified: new Date('2026-04-01') },
@@ -42,7 +49,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }))
 
-  const blogPages: MetadataRoute.Sitemap = getBlogSlugs().map(({ slug, date }) => ({
+  const blogPages: MetadataRoute.Sitemap = blogSlugs.map(({ slug, date }) => ({
     url: `${base}/blog/${slug}`,
     lastModified: new Date(date),
     changeFrequency: 'monthly',
