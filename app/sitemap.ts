@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import { CASE_STUDIES } from '@/lib/data'
+import { PRICING_CONFIRMED, PRICING_UPDATED } from '@/lib/pricing'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
@@ -40,6 +41,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/about`,       priority: 0.7, changeFrequency: 'monthly', lastModified: new Date('2026-04-01') },
     { url: `${base}/contact`,     priority: 0.8, changeFrequency: 'monthly', lastModified: new Date('2026-04-01') },
     { url: `${base}/lp/ai-audit`, priority: 0.6, changeFrequency: 'monthly', lastModified: new Date('2026-04-15') },
+    // Geo landing page for "AI automation company in Chennai" (frozen prompt P15) — the URL
+    // shape competitors already rank with. High priority: it is the softest AI-visibility target.
+    { url: `${base}/ai-automation-company-in-chennai`, priority: 0.9, changeFrequency: 'monthly', lastModified: new Date('2026-07-26') },
+    // Pricing enters the sitemap only once the bands are real — see lib/pricing.ts.
+    ...(PRICING_CONFIRMED
+      ? [{ url: `${base}/pricing`, priority: 0.9, changeFrequency: 'monthly' as const, lastModified: new Date(PRICING_UPDATED) }]
+      : []),
   ]
 
   const caseStudyPages: MetadataRoute.Sitemap = CASE_STUDIES.map(study => ({
