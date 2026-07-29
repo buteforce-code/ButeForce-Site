@@ -130,15 +130,29 @@ const organizationSchema = {
         height: 40,
       },
       email: 'admin@buteforce.com',
+      telephone: '+91-9092656133',
       description:
         'Buteforce builds production-grade AI automation systems and computer vision pipelines for businesses. No consulting. No pilot projects. Working systems shipped in 2–8 weeks.',
       foundingDate: '2023',
-      areaServed: ['US', 'GB', 'AU', 'AE', 'Worldwide'],
+      areaServed: ['US', 'GB', 'AU', 'AE', 'IN', 'Worldwide'],
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Chennai',
         addressRegion: 'Tamil Nadu',
         addressCountry: 'IN',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 13.0827,
+        longitude: 80.2707,
+      },
+      contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'sales',
+        email: 'admin@buteforce.com',
+        telephone: '+91-9092656133',
+        areaServed: ['IN', 'US', 'GB', 'AU', 'AE'],
+        availableLanguage: ['en', 'ta'],
       },
       founder: {
         '@type': 'Person',
@@ -201,7 +215,7 @@ const organizationSchema = {
         ],
       },
       sameAs: [
-        'https://linkedin.com/company/buteforce',
+        'https://www.linkedin.com/company/116714054/',
         'https://github.com/buteforce',
       ],
       knowsAbout: [

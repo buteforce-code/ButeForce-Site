@@ -14,6 +14,13 @@ interface Props {
   params: Promise<{ slug: string }>
 }
 
+// One spelling of the founder across byline, OG tags and JSON-LD. A split author name splits
+// the entity, which is what the 2026-07-26 AI-visibility scan found behind 0/18 citations.
+const AUTHOR_NAME = 'Dhyaneshwaran'
+
+const fmtDate = (value: string) =>
+  new Date(value).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+
 function getAllSlugs(): string[] {
   const dir = path.join(process.cwd(), 'content/blog')
   if (!fs.existsSync(dir)) return []
@@ -61,7 +68,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: post.meta.title,
       description: post.meta.description,
       publishedTime: post.meta.date,
-      authors: ['Dhyaneshwaran'],
+      modifiedTime: post.meta.dateModified || post.meta.date,
+      authors: [post.meta.author || AUTHOR_NAME],
       images: [{ url: ogImage, width: 1200, height: 630, alt: post.meta.title }],
     },
     twitter: {
@@ -78,17 +86,20 @@ export default async function BlogPostPage({ params }: Props) {
   const post = getPost(slug)
   if (!post) notFound()
 
+  const author = post.meta.author || AUTHOR_NAME
+  const dateModified = post.meta.dateModified || post.meta.date
+
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: post.meta.title,
     description: post.meta.description,
     datePublished: post.meta.date,
-    dateModified: post.meta.dateModified || post.meta.date,
+    dateModified,
     author: {
       '@type': 'Person',
       '@id': 'https://buteforce.com/#founder',
-      name: 'Dhyaneshwaran',
+      name: author,
       jobTitle: 'Founder & AI Architect',
       url: 'https://www.linkedin.com/in/dhyankarthik/',
       worksFor: { '@type': 'Organization', name: 'Buteforce', url: 'https://buteforce.com' },
@@ -161,14 +172,36 @@ export default async function BlogPostPage({ params }: Props) {
               )}
             </div>
 
-            <div className="flex items-center gap-4 mb-6">
+            {/* Byline + freshness. Both are visible on purpose: a named author and a shown
+                last-updated date are what an answer engine reads as provenance, and they are
+                only trustworthy if a human reader can check them too. */}
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mb-6">
+              <span className="font-mono text-xs tracking-wide text-ink">
+                By {author}
+              </span>
               {post.meta.date && (
-                <span className="font-mono text-xs tracking-wide text-ink-faint">
-                  {new Date(post.meta.date).toLocaleDateString('en-US', {
-                    month: 'long', day: 'numeric', year: 'numeric'
-                  })}
-                </span>
+                <>
+                  <span className="text-surface-border" aria-hidden="true">·</span>
+                  <time
+                    dateTime={post.meta.date}
+                    className="font-mono text-xs tracking-wide text-ink-faint"
+                  >
+                    {fmtDate(post.meta.date)}
+                  </time>
+                </>
               )}
+              {dateModified && dateModified !== post.meta.date && (
+                <>
+                  <span className="text-surface-border" aria-hidden="true">·</span>
+                  <time
+                    dateTime={dateModified}
+                    className="font-mono text-xs tracking-wide text-ink-muted"
+                  >
+                    Updated {fmtDate(dateModified)}
+                  </time>
+                </>
+              )}
+              <span className="text-surface-border" aria-hidden="true">·</span>
               <span className="font-mono text-[10px] tracking-wide text-ink-faint">
                 {readTime} min read
               </span>
@@ -208,7 +241,7 @@ export default async function BlogPostPage({ params }: Props) {
                 />
               </div>
               <div>
-                <p className="font-display font-bold text-base text-ink">Dhyaneshwaran</p>
+                <p className="font-display font-bold text-base text-ink">{author}</p>
                 <p className="font-mono text-xs text-ink-faint tracking-wide">
                   Founder & AI Architect, Buteforce ·{' '}
                   <a
