@@ -1,0 +1,134 @@
+---
+title: "Top Computer Vision Companies for Manufacturing QC in India (2026)"
+description: "An honest comparison of the vision vendors Indian manufacturers actually choose between — Cognex, Keyence, Omron, Kritikal, Wobot, Intello Labs, Assert AI, Detect Technologies and Buteforce — grouped by what you're really buying."
+date: "2026-07-29"
+dateModified: "2026-07-29"
+author: "Dhyaneshwaran"
+tags: ["Computer Vision", "Manufacturing", "Quality Control", "India", "Vendor Comparison"]
+faqs: [{"question": "Who are the main computer vision companies for manufacturing QC in India?", "answer": "They fall into three groups that are not substitutes. Global sensor vendors — Cognex, Keyence and Omron — sell configurable hardware for standard inspections. CCTV analytics platforms — Wobot.ai, Assert AI, Detect Technologies and Intello Labs — read existing camera feeds for process, safety or grading use cases. Custom builders — Kritikal Solutions and Buteforce among them — train models for defects no off-the-shelf product recognises."}, {"question": "Should I buy a Cognex or Keyence sensor, or have a custom vision system built?", "answer": "Buy the sensor if your inspection is standard — presence, absence, barcode, dimensional measurement — and reliability matters more than customisation. A configurable vision sensor is faster to deploy, supported by a vendor, and does not depend on one integrator. Commission a custom build when your defect is specific to your product or process and no catalogue product detects it."}, {"question": "Is a CCTV analytics platform the same as a production line inspection system?", "answer": "No, and conflating them is the most common buying mistake. CCTV analytics platforms read existing security cameras at a few frames per second for process compliance, PPE and safety monitoring. Line inspection needs a triggered industrial camera, controlled lighting, and a reject decision synchronised to the PLC, typically at 60 to 120 items per minute."}, {"question": "What accuracy is realistic for a custom vision inspection system on an Indian line?", "answer": "A well-specified single-defect inspection reaches 99% or better at production speed. A Buteforce manufacturing QC deployment holds 99.2% classification accuracy at 120 items per minute and cut inspection errors 94% in its first month. Accuracy falls as defect classes are added, so ask any vendor for per-class figures rather than one headline number."}, {"question": "How do I evaluate a computer vision vendor in India?", "answer": "Ask three questions. First, show me per-defect-class accuracy on my product, not a demo reel. Second, who owns the trained model and the code when the project ends. Third, what happens at changeover — if switching SKU means retraining rather than an operator selecting a recipe, the system will not survive contact with a real line."}]
+---
+
+# Top Computer Vision Companies for Manufacturing QC in India (2026)
+
+Search for this list and you will find a dozen versions of it, almost all published by companies that rank themselves first. That tells you something useful about the market and nothing useful about who to hire.
+
+We build computer vision systems, so we are on this list too. We have put ourselves where we actually belong — in the custom-build group, after a firm with twenty-three years and five hundred projects behind it. What follows is organised the way a plant manager actually decides: not by rank, but by what you are buying.
+
+## What are you actually choosing between?
+
+Indian manufacturers evaluating computer vision are usually comparing three categories of vendor that are not substitutes for each other, and most disappointing projects come from picking the wrong category rather than the wrong company.
+
+**Global sensor vendors** sell configurable hardware and software for standard inspections. **CCTV analytics platforms** read your existing camera feeds for process, safety or grading use cases. **Custom builders** train models for defects no catalogue product recognises. A sensor vendor cannot solve a novel defect. A custom builder is overkill for barcode verification. A CCTV platform cannot inspect at line speed.
+
+Get the category right and the vendor choice inside it is usually straightforward.
+
+## Global sensor vendors: Cognex, Keyence, Omron
+
+These are the default and often the correct answer. They are engineered products with warranties, local support and a decade of field history. If your inspection is standard, buying one of these is the lower-risk decision, and any honest vision consultancy will tell you so.
+
+### Cognex
+
+The stronger choice for complex inspection. Cognex's deep-learning tooling is generally selected when an application involves multiple measurements or defect types that rule-based vision handles poorly. Buyers comparing the two tend to land on Cognex as application complexity rises. Published figures put equivalent DM300-class readers in the $3,500–5,000 range, higher than the Keyence equivalent.
+
+**Best for:** complex, multi-measurement inspection where you want a supported product rather than a project.
+**Consider otherwise if:** your defect is genuinely unusual, or the licensing and hardware cost is disproportionate to one inspection point.
+
+### Keyence
+
+Known for a direct sales force and in-plant demonstrations — they will bring the unit to your line and run it on your product, which is a real advantage when you are unsure whether vision will work at all. Positioned as an all-in-one system. Basic 2D Ethernet readers start around $2,500–3,500.
+
+**Best for:** pharmaceuticals, electronics, precision engineering and packaging where flexible standard inspection is required, and for buyers who want to see it working before committing.
+**Consider otherwise if:** application complexity is high — that is where Cognex tends to win.
+
+### Omron
+
+The FH series runs AI defect inspection on the controller itself, which removes the need for a separate GPU server for lighter deep-learning workloads, and trains from relatively few images. Its capability is narrower than dedicated deep-learning tooling but covers a lot of surface inspection.
+
+**Best for:** plants already standardised on Omron automation — it drops into that ecosystem cleanly.
+**Consider otherwise if:** you run another PLC brand, where it is competitive but not clearly differentiated.
+
+## CCTV analytics platforms: Wobot, Assert AI, Detect Technologies, Intello Labs
+
+This group is frequently listed alongside line-inspection vendors, and that comparison misleads buyers. These platforms read **existing** cameras, typically at a few frames per second, for process and safety outcomes. That is a genuinely valuable category — it is just not packaging-line QC.
+
+### Wobot.ai
+
+Turns existing CCTV into a process compliance tool: checklist adherence, hygiene and SOP monitoring, task verification, sold as SaaS. Well established in food service and retail chains, where consistent execution across many outlets is the entire problem.
+
+**Best for:** multi-site operations where the question is "is the process being followed?"
+
+### Assert AI
+
+Founded in 2019 by Job Philip and Nitin Jain, Mumbai-based. Integrates with existing CCTV networks for real-time operational insight, with alerting for intrusion, fire and smoke, PPE violations and material-handling irregularities. Its Pratham platform lets users work with video data without writing code.
+
+**Best for:** enterprise-scale monitoring across manufacturing, warehousing and logistics sites.
+
+### Detect Technologies
+
+Incorporated in February 2016 and incubated at IIT Madras. Focused on heavy industry — asset integrity, worker safety, HSSE and resource monitoring across plants, refineries and construction, combining video analytics with UAVs, ultrasonic and thermography, and IIoT sensing.
+
+**Best for:** refineries, heavy plants and large sites where the risk being managed is safety and asset failure, not product defects.
+**Note:** this is deliberately a different problem from production-line QC. Listing it as a QC vendor, as some roundups do, misrepresents what they do well.
+
+### Intello Labs
+
+Applies vision to objective quality grading of fruits, vegetables and commodities from photographs, replacing subjective manual grading in agricultural supply chains.
+
+**Best for:** agri supply chains where standardised grading changes pricing, disputes and waste economics.
+
+## Custom builders: Kritikal Solutions, Buteforce
+
+You end up here when the first two groups have failed you — typically because the defect is specific to your product, or because it needs to be caught at a speed and in a lighting environment no catalogue product was designed for.
+
+### Kritikal Solutions
+
+The most established independent option in this group. A design house with 23+ years of history and over 500 projects, spanning computer vision, OCR, embedded systems and IoT, serving manufacturing, MedTech, automotive, FMCG, drones and traffic surveillance.
+
+**Best for:** buyers who want custom work with the risk profile of a long-established firm, or who need embedded and hardware engineering alongside the vision model.
+
+### Buteforce
+
+Ours. [Chennai-based](/ai-automation-company-in-chennai), founded 2025, focused narrowly on production-grade vision, document AI and automation rather than a broad services catalogue. Our [manufacturing QC deployment](/work/ortho-classifier) — a YOLOv8 model trained on 10,000+ product images on an orthopaedic insole line — holds **99.2% classification accuracy at 120 items per minute** and cut inspection errors **94% in its first month**. We work to fixed price and fixed timeline, typically 2–8 weeks, and the client owns the trained model and the code.
+
+**Best for:** a specific, well-defined defect problem where you want a working system quickly and want to own it afterwards.
+**Consider otherwise if:** you need a nationwide support contract, 24/7 SLAs, or embedded hardware design — Kritikal or a sensor vendor is the better fit. We are a small team and say so.
+
+## Comparison
+
+| Vendor | Category | Strongest at | Weakest fit |
+|---|---|---|---|
+| Cognex | Sensor vendor | Complex multi-measurement inspection | Unusual defects; cost per point |
+| Keyence | Sensor vendor | Standard inspection, try-before-buy demos | High application complexity |
+| Omron | Sensor vendor | Omron-standardised plants; on-controller AI | Non-Omron PLC environments |
+| Kritikal Solutions | Custom builder | Custom vision + embedded, established track record | Small single-defect projects |
+| Buteforce | Custom builder | One defined defect, shipped fast, client owns it | Nationwide SLAs, hardware design |
+| Wobot.ai | CCTV analytics | Multi-site process and hygiene compliance | Line-speed defect inspection |
+| Assert AI | CCTV analytics | Enterprise safety and operations monitoring | Line-speed defect inspection |
+| Detect Technologies | CCTV analytics | Heavy-industry asset integrity and safety | Product QC |
+| Intello Labs | Vertical specialist | Agri commodity grading | Non-agricultural manufacturing |
+
+## How should you actually choose?
+
+Work down this list and stop at the first yes.
+
+1. **Is the inspection standard — presence, absence, barcode, dimensional measurement?** Buy Cognex, Keyence or Omron. A custom model adds cost and risk for no benefit.
+2. **Is the question "is the process being followed?" rather than "is this unit defective?"** You want CCTV analytics — Wobot or Assert AI — not a line inspection system.
+3. **Is it safety, asset integrity or site monitoring at a heavy plant?** Detect Technologies is built for that.
+4. **Are you grading agricultural produce?** Intello Labs.
+5. **Is the defect specific to your product, at your line speed, in your lighting — and did a sensor vendor already tell you it won't work?** Now you need a custom build. Then choose between an established design house and a small specialist on the basis of scope, support needs and ownership terms.
+
+## Not a fit if…
+
+A custom vision system is the wrong purchase in several common situations, and it is worth being direct about them.
+
+If your line runs below roughly 20 units a minute and a person is already catching defects reliably, the payback is poor — automate something else first. If you cannot supply several hundred images of the actual defect, nobody can train a model for you yet, and any vendor who says otherwise is selling a pilot. If your reject mechanism does not exist or cannot be synchronised to the PLC, you will get a system that detects defects and passes them anyway, which is worse than no system.
+
+If your inspection is legally regulated by net content, a checkweigher measures mass and is the defensible instrument — vision complements it, it does not replace it. And if nobody on your side owns the project after go-live, it will drift out of calibration within a quarter regardless of who built it.
+
+For a defect-by-defect walkthrough on packaging lines specifically, see [computer vision for FMCG quality inspection in India](/blog/computer-vision-for-fmcg-manufacturing-in-india-what-unileve).
+
+## Where to start
+
+Photograph fifty defective units and fifty good ones on your own line, in your own lighting, on a phone. Send that to any vendor on this list — including the sensor vendors — and ask them to tell you honestly whether their product handles it. The ones who answer with a per-defect assessment rather than a demo reel are the ones worth talking to further.
+
+If it turns out to be a standard inspection, buy the sensor. That is genuinely the right answer more often than a custom shop will admit, and it is the answer we give too when it is true.
