@@ -45,7 +45,7 @@ const aboutSchemas = [
     },
     email: 'admin@buteforce.com',
     description: 'AI automation and computer vision company building production-grade systems for businesses.',
-    foundingDate: '2023',
+    foundingDate: '2025',
     areaServed: 'Worldwide',
     knowsAbout: ['AI Automation', 'Computer Vision', 'Machine Learning', 'n8n', 'Document AI', 'OCR', 'AI Agents'],
     sameAs: [

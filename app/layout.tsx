@@ -122,7 +122,7 @@ const organizationSchema = {
       name: 'Buteforce',
       alternateName: 'Buteforce AI',
       url: 'https://buteforce.com',
-      slogan: 'Precision AI Systems',
+      slogan: 'Bridging Business and AI',
       logo: {
         '@type': 'ImageObject',
         url: 'https://buteforce.com/buteforce-wordmark.svg',
@@ -133,7 +133,7 @@ const organizationSchema = {
       telephone: '+91-9092656133',
       description:
         'Buteforce builds production-grade AI automation systems and computer vision pipelines for businesses. No consulting. No pilot projects. Working systems shipped in 2–8 weeks.',
-      foundingDate: '2023',
+      foundingDate: '2025',
       areaServed: ['US', 'GB', 'AU', 'AE', 'IN', 'Worldwide'],
       address: {
         '@type': 'PostalAddress',
@@ -217,6 +217,7 @@ const organizationSchema = {
       sameAs: [
         'https://www.linkedin.com/company/116714054/',
         'https://github.com/buteforce',
+        'https://www.goodfirms.co/company/buteforce',
       ],
       knowsAbout: [
         'AI Automation', 'Computer Vision', 'Machine Learning',

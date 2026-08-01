@@ -3,7 +3,7 @@
 
 export const SITE = {
   name: 'Buteforce',
-  tagline: 'Precision AI Systems',
+  tagline: 'Bridging Business and AI',
   email: 'admin@buteforce.com',
   url: 'https://buteforce.com',
   github: 'https://github.com/buteforce',

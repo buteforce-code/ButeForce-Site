@@ -258,7 +258,7 @@ export default function ChennaiPage() {
               <p className="font-body text-lg text-ink-muted max-w-2xl leading-relaxed mb-8">
                 Buteforce builds computer vision, document AI and AI agents from Chennai for
                 manufacturers and multi-location retailers across the Tamil Nadu corridor. Fixed
-                price, fixed timeline, and you own what we build. Founded 2023, 10+ production
+                price, fixed timeline, and you own what we build. Founded 2025, 10+ production
                 systems shipped.
               </p>
 
