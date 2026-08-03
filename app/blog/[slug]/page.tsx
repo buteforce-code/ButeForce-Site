@@ -4,6 +4,7 @@ import Nav from '@/components/nav'
 import Footer from '@/components/footer'
 import { CTASection } from '@/components/sections'
 import { MDXRemote } from 'next-mdx-remote/rsc'
+import remarkGfm from 'remark-gfm'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
@@ -223,7 +224,10 @@ export default async function BlogPostPage({ params }: Props) {
         <article className="py-12">
           <div className="max-w-prose-wide mx-auto px-6 lg:px-10">
             <div className="prose-buteforce">
-              <MDXRemote source={post.body} />
+              <MDXRemote
+                source={post.body}
+                options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+              />
             </div>
           </div>
         </article>
