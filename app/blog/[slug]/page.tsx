@@ -10,6 +10,7 @@ import path from 'path'
 import matter from 'gray-matter'
 import Link from 'next/link'
 import Image from 'next/image'
+import BlogAnalytics from '@/components/blog-analytics'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -140,6 +141,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <>
+      <BlogAnalytics slug={slug} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
